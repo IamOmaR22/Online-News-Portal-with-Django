@@ -1,0 +1,180 @@
+/*
+ *  Document   : header.less
+ *  Author     : pixelcave
+ *
+ *  HEADER
+ *  Template's custom header related styles
+ *
+ */
+
+header.navbar-default,
+header.navbar-inverse {
+    padding: 0;
+    margin: 0;
+    min-width: 320px;
+    border: none;
+}
+
+header.navbar-default.navbar-fixed-top {
+    border-bottom: 1px solid @color_light_main;
+}
+
+header.navbar-default.navbar-fixed-bottom {
+    border-top: 1px solid @color_light_main;
+}
+
+header.navbar-inverse.navbar-fixed-top {
+    border-bottom: 1px solid @color_dark;
+}
+
+header.navbar-inverse.navbar-fixed-bottom {
+    border-top: 1px solid @color_dark;
+}
+
+/* Header Nav */
+.navbar-default .navbar-nav > li > a {
+    color: @color_dark;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: @color_highlight;
+}
+
+.navbar-inverse .collapse.in .navbar-nav .open .dropdown-menu > li > a {
+    color: #dddddd;
+}
+
+.nav.navbar-nav-custom {
+    float: left;
+    margin: 0;
+}
+
+.nav.navbar-nav-custom > li {
+    min-height: 50px;
+    float: left;
+}
+
+.nav.navbar-nav-custom > li > a {
+    min-width: 50px;
+    padding: 5px 7px;
+    line-height: 40px;
+    text-align: center;
+    color: @color_dark;
+    position: relative;
+}
+
+.nav.navbar-nav-custom > li > a .gi,
+.nav.navbar-nav-custom > li > a .hi,
+.nav.navbar-nav-custom > li > a .si,
+.nav.navbar-nav-custom > li > a .fi {
+    margin-top: -3px;
+}
+
+.nav.navbar-nav-custom > li > a .label-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    font-weight: 600;
+}
+
+.navbar-fixed-bottom .nav.navbar-nav-custom > li > a .label-indicator {
+    top: auto;
+    bottom: 0;
+}
+
+.navbar-inverse .nav.navbar-nav-custom > li > a {
+    color: #ffffff;
+}
+
+.nav.navbar-nav-custom > li.open > a,
+.nav.navbar-nav-custom > li > a:hover,
+.nav.navbar-nav-custom > li > a:focus {
+    background-color: @color_highlight;
+    color: #ffffff;
+}
+
+.nav.navbar-nav-custom > li > a > img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    vertical-align: top;
+}
+
+/* Header Search */
+.navbar-form {
+    margin: 7px 0;
+}
+
+.collapsing .navbar-form,
+.collapse.in .navbar-form {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.collapsing .navbar-form .form-group,
+.collapse.in .navbar-form .form-group {
+    margin-bottom: 0;
+}
+
+.navbar-form-custom {
+    padding: 0;
+    width: 100px;
+    float: left;
+    height: 50px;
+}
+
+.navbar-form-custom .form-control {
+    padding: 10px;
+    margin: 0;
+    height: 50px;
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    z-index: 2000;
+}
+
+.navbar-form-custom .form-control:hover,
+.navbar-form-custom .form-control:focus {
+    background-color: #ffffff;
+}
+
+.navbar-form-custom .form-control:focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+.navbar-inverse .navbar-form-custom .form-control {
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-form-custom .form-control:hover,
+.navbar-inverse .navbar-form-custom .form-control:focus {
+    background: #000000;
+    color: #ffffff;
+}

@@ -1,0 +1,121 @@
+
+{% extends 'back/master.html' %}
+
+{% load static %}
+
+<!-- Add Editor(CKEditor) for News Add Page Start -->
+{% block headblock %}
+
+    <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+
+{% endblock %}
+<!-- Add Editor(CKEditor) for News Add Page Start -->
+
+{% block mainblock %}
+<!-- Datatables Header -->
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="fa fa-table"></i>Add News<br><small>You can add, edit and delete your data!</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>News</li>
+    <li><a href="/panel/news/add">Add</a></li>
+</ul>
+<!-- END Datatables Header -->
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Basic Form Elements Block -->
+        <div class="block">
+            <!-- Basic Form Elements Title -->
+            <div class="block-title">
+                
+                <h2><strong>Add</strong> News</h2>
+            </div>
+            <!-- END Form Elements Title -->
+
+            <!-- Basic Form Elements Content -->
+            <form action="{% url 'news_add' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="text" id="newstitle" name="newstitle" class="form-control" placeholder="News Title">
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <select id="newscat" name="newscat" class="select-chosen" data-placeholder="Choose a Category..." style="width: 250px;">
+                            <!--  Dynamic category Start -->
+                            {% for i in cat %}
+                            <option value="{{ i.pk }}">{{ i.catname }} | {{ i.name }}</option>
+                            {% endfor %}
+                            <!--  Dynamic category End -->
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea type="text" id="newstxtshort" name="newstxtshort" rows="5" class="form-control" placeholder="Short txt">Short txt</textarea>
+                    </div>                   
+                </div>
+
+                <!-- Replace by name -->
+                <!-- Add Editor(CKEditor) for News Add Page Start -->
+                <script>
+                    CKEDITOR.replace( 'newstxtshort' ); 
+                </script>
+                <!-- Add Editor(CKEditor) for News Add Page Start -->
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea type="text" id="newstxt" name="newstxt" rows="5" class="form-control" placeholder="Body txt">Body txt</textarea>
+                    </div>                   
+                </div>
+
+              
+                <!-- Add Editor(CKEditor) for News Add Page Start -->
+                <script>
+                    CKEDITOR.replace( 'newstxt' );
+                </script>
+                <!-- Add Editor(CKEditor) for News Add Page Start -->
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="file" id="myfile" name="myfile" rows="5" class="form-control" placeholder="Body txt"></input>
+                    </div>
+                   
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>   </div>
+      
+                </div>
+
+            
+
+
+            </form>
+            <!-- END Basic Form Elements Content -->
+        </div>
+        <!-- END Basic Form Elements Block -->
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block footerblock %}
+<!-- Load and execute javascript code used only in this page -->
+<script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
+        {% endblock %}

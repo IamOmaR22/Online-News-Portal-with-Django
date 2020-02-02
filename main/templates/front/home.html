@@ -1,0 +1,268 @@
+
+{% extends 'front/master.html' %}
+
+
+{% load static %}
+
+
+{% block headblock %}
+<title>{{ site.name }} | Home</title>
+{% endblock %}
+
+
+{% block mainblock %}
+
+
+<!-- Feature post -->
+<section class="bg0">
+	<div class="row m-rl-0 justify-content-center">
+
+		<!-- Last Three news Start -->
+		{% for lastnews in lastnews %}
+		<div class="col-md-4 p-rl-1 p-b-2">
+			<div class="bg-img1 size-a-11 how1 pos-relative" style="background-image: url({{ lastnews.picurl }});">
+				<a href="{% url 'news_detail' word=lastnews.name %}" class="dis-block how1-child1 trans-03"></a>
+
+				<div class="flex-col-e-s s-full p-rl-25 p-tb-18">
+					<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+						{{ lastnews.catname }}
+					</a>
+
+					<h3 class="how1-child2 m-t-14 m-b-10">
+						<a href="{% url 'news_detail' word=lastnews.name %}"
+							class="f1-l-1 cl0 hov-cl10 trans-03 respon1">
+							{{ lastnews.name }}
+						</a>
+					</h3>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		<!-- Last Three news End -->
+
+	</div>
+</section>
+
+<!-- Category Dynamically Shows Start -->
+<section class="post bg0 p-t-85">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-12">
+				<div class="p-r-10 p-rl-0-sr991 p-b-20">
+
+
+					{% for newscat in cat %}
+					<!--To get all these news boxes category wise-->
+					{% if newscat.count != 0 %}
+					<!--if the category has no news then the category will not be shown-->
+					<!-- Life Style  -->
+					<div class="p-b-25 m-r--10 m-r-0-sr991">
+						<div class="how2 how2-cl5 flex-s-c m-r-10 m-r-0-sr991">
+							<h3 class="f1-m-2 cl17 tab01-title">
+								{{ newscat.name }}
+							</h3>
+						</div>
+
+						<div class="row p-t-35">
+							<div class="col-sm-6 p-r-25 p-r-15-sr991">
+								<!-- Item post -->
+								<!-- Latest post -->
+								{% for ab in news %}
+								<!--For dynamic news category-->
+								{% if newscat.pk == ab.ocatid %}
+								<!-- To categorise for that category's news -->
+								<div class="flex-wr-sb-s m-b-30">
+									<a href="{% url 'news_detail' word=ab.name %}"
+										class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="{{ ab.picurl }}" alt="IMG">
+									</a>
+
+									<div class="size-w-2">
+										<h5 class="p-b-5">
+											<a href="{% url 'news_detail' word=ab.name %}"
+												class="f1-s-5 cl3 hov-cl10 trans-03">
+												{{ ab.name }}
+												<!-- we used here database field -->
+											</a>
+										</h5>
+
+										<span class="cl8">
+											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+												{{ ab.catname }}
+												<!--catname is field of databse-->
+											</a>
+
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
+
+											<span class="f1-s-3">
+												{{ ab.date }} | {{ ab.time }}
+											</span>
+										</span>
+									</div>
+								</div>
+								{% endif %}
+								{% endfor %}
+
+
+							</div>
+
+							<div class="col-sm-6 p-r-25 p-r-15-sr991">
+								<!-- Item post -->
+								<div class="flex-wr-sb-s m-b-30">
+									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
+									</a>
+
+									<div class="size-w-2">
+										<h5 class="p-b-5">
+											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+												Donec metus orci, malesuada et lectus vitae
+											</a>
+										</h5>
+
+										<span class="cl8">
+											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+												Beachs
+											</a>
+
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
+
+											<span class="f1-s-3">
+												Feb 17
+											</span>
+										</span>
+									</div>
+								</div>
+
+								<!-- Item post -->
+								<div class="flex-wr-sb-s m-b-30">
+									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
+									</a>
+
+									<div class="size-w-2">
+										<h5 class="p-b-5">
+											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+												Donec metus orci, malesuada et lectus vitae
+											</a>
+										</h5>
+
+										<span class="cl8">
+											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+												Flight
+											</a>
+
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
+
+											<span class="f1-s-3">
+												Feb 16
+											</span>
+										</span>
+									</div>
+								</div>
+
+								<!-- Item post -->
+								<div class="flex-wr-sb-s m-b-30">
+									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
+									</a>
+
+									<div class="size-w-2">
+										<h5 class="p-b-5">
+											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+												Donec metus orci, malesuada et lectus vitae
+											</a>
+										</h5>
+
+										<span class="cl8">
+											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+												Flight
+											</a>
+
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
+
+											<span class="f1-s-3">
+												Feb 16
+											</span>
+										</span>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					{% endif %}
+					{% endfor %}
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+<!-- Category Dynamically Shows End -->
+
+
+
+<!-- Latest -->
+<section class="bg0 p-t-60 p-b-40">
+	<div class="container">
+		<div class="how2 how2-cl4 flex-s-c">
+			<h3 class="f1-m-2 cl3 tab01-title">
+				Latest News
+			</h3>
+		</div>
+
+		<div class="row p-t-35">
+
+			{% for i in news %}
+			<div class="col-sm-6 col-md-4">
+				<!-- Item latest -->
+				<div class="m-b-45">
+					<a href="{% url 'news_detail' word=i.name %}" class="wrap-pic-w hov1 trans-03">
+						<img style="display: inline-block; width: 330px; height: 200px;" src="{{ i.picurl }}" alt="IMG">
+					</a>
+
+					<div class="p-t-16">
+						<h5 class="p-b-5">
+							<a href="{% url 'news_detail' word=i.name %}" class="f1-m-3 cl2 hov-cl10 trans-03">
+								{{ i.name }}
+							</a>
+						</h5>
+
+						<p>{{ i.short_txt|safe }}</p> <!-- need to use safe when we use ckeditor -->
+						<br>
+
+						<span class="cl8">
+							<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+								by {{ i.writer }}
+							</a>
+
+							<span class="f1-s-3 m-rl-3">
+								-
+							</span>
+
+							<span class="f1-s-3">
+								{{ i.date }}
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}

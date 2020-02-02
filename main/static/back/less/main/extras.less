@@ -1,0 +1,595 @@
+/*
+ *  Document   : extras.less
+ *  Author     : pixelcave
+ *
+ *  EXTRAS
+ *  Helper, themes, responsive, retina and print related styles
+ *
+ */
+
+/*
+=================================================================
+HELPERS
+=================================================================
+*/
+
+.push-bit {
+    margin-bottom: 10px !important;
+}
+
+.push {
+    margin-bottom: 15px !important;
+}
+
+.push-top-bottom {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.display-none {
+    display: none;
+}
+
+.remove-margin {
+    margin: 0 !important;
+}
+
+.remove-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
+.remove-padding {
+    padding: 0 !important;
+}
+
+.remove-radius {
+    border-radius: 0 !important;
+}
+
+.remove-box-shadow {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.remove-transition {
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.lt-ie10 .hidden-lt-ie10 {
+    display: none !important;
+}
+
+.visible-lt-ie10 {
+    display: none;
+}
+
+.lt-ie10 .visible-lt-ie10 {
+    display: block;
+}
+
+:focus {
+    outline: 0 !important;
+}
+
+/*
+=================================================================
+(#m08ths) THEMES
+=================================================================
+*/
+
+/* Alternative Main Style */
+.style-alt #page-content {
+    background-color: #ffffff;
+}
+
+.style-alt .block {
+    border-color: @color_light_secondary;
+}
+
+.style-alt .block.block-alt-noborder {
+    border-color: transparent;
+}
+
+.style-alt .block-title {
+    background-color: @color_light_secondary;
+    border-bottom-color: @color_light_secondary;
+}
+
+.style-alt .content-header + .breadcrumb-top,
+.style-alt .breadcrumb-top + .content-header,
+.style-alt #page-content + footer {
+    background-color: @color_light_ultra;
+}
+
+.style-alt .content-header,
+.style-alt .breadcrumb-top {
+    border-bottom-color: @color_light_main;
+}
+
+.style-alt #page-content + footer {
+    border-top-color: @color_light_main;
+}
+
+.style-alt .widget,
+.style-alt .task-list li {
+    background-color: #f6f6f6;
+}
+
+/* Test Circle used in Color Themes Page */
+.test-circle {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #eeeeee;
+    border: 2px solid #cccccc;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* Default Color Theme specific colors */
+.themed-color {
+    color: @color_highlight;
+}
+
+.themed-border {
+    border-color: @color_highlight;
+}
+
+.themed-background {
+    background-color: @color_highlight;
+}
+
+.themed-color-dark {
+    color: @color_dark;
+}
+
+.themed-border-dark {
+    border-color: @color_dark;
+}
+
+.themed-background-dark {
+    background-color: @color_dark;
+}
+
+/* Contextual Background Colors */
+.themed-background-danger {
+    background-color: #e74c3c !important;
+}
+
+.themed-background-warning {
+    background-color: #e67e22 !important;
+}
+
+.themed-background-info {
+    background-color: #3498db !important;
+}
+
+.themed-background-success {
+    background-color: #27ae60 !important;
+}
+
+.themed-background-muted {
+    background-color: #999999 !important;
+}
+
+.themed-background-muted-light {
+    background-color: #f9f9f9!important;
+}
+
+/*
+=================================================================
+RESPONSIVE
+=================================================================
+*/
+
+/* Small devices, Tablets (>767px) */
+@media screen and (min-width: 768px) {
+
+    /* General */
+    #login-background {
+        height: 400px;
+    }
+
+    #login-background > img {
+        top: 0;
+    }
+
+    #login-container,
+    #login-alt-container {
+        width: 480px;
+        top: 186px;
+        margin-left: -240px;
+    }
+
+    .full-page-container {
+        width: 740px;
+        top: 120px;
+        padding: 20px;
+        margin-left: -370px;
+    }
+
+    .full-page-section {
+        padding: 50px 0;
+        margin: 50px -20px;
+    }
+
+    #page-content {
+        padding: 20px 20px 1px;
+    }
+
+    .header-section,
+    .breadcrumb-top,
+    .block,
+    .block.full,
+    .modal-body,
+    #page-content + footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .block .block-content-full {
+        margin: -20px -20px -1px;
+    }
+
+    .block.full .block-content-full {
+        margin: -20px;
+    }
+
+    .content-header,
+    .content-top,
+    .breadcrumb-top {
+        margin: -20px -20px 20px;
+    }
+
+    .content-header + .breadcrumb-top,
+    .breadcrumb-top + .content-header {
+        margin-top: -21px;
+    }
+
+    .block,
+    .widget {
+        margin-bottom: 20px;
+    }
+
+    .block-title,
+    .block-top {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .draggable-placeholder {
+        margin-bottom: 20px;
+    }
+
+    .navbar-fixed-top .dropdown-menu {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    /* Forms */
+    .form-bordered {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .form-bordered .form-group {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .form-horizontal.form-bordered .form-group {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    /* Tabs */
+    .nav-tabs > li > a {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    /* Chat UI */
+    .chatui-people,
+    .chatui-talk,
+    .chatui-input {
+        position: absolute;
+    }
+
+    .chatui-talk,
+    .chatui-input {
+        right: 250px;
+        left: 0;
+    }
+
+    .chatui-people {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 250px;
+        height: auto;
+    }
+
+    .chatui-talk {
+        height: auto;
+    }
+
+    .chatui-talk .chatui-talk-msg {
+        width: 50%;
+        margin-left: 50%;
+    }
+
+    .chatui-talk .chatui-talk-msg.chatui-talk-msg-highlight {
+        margin-left: 0;
+        margin-right: 50%;
+    }
+
+    .chatui-input {
+        bottom: 0;
+    }
+}
+
+/* Medium devices, Desktops (>991px) */
+@media screen and (min-width: 992px) {
+
+    /* General */
+    #login-alt-container {
+        display: block;
+    }
+
+    /* Sidebar Animations */
+    .sidebar-no-animations #sidebar,
+    .sidebar-no-animations #sidebar-alt {
+        -webkit-transition: opacity 0.5s linear, background-color 0.2s ease-out;
+        transition: opacity 0.5s linear, background-color 0.2s ease-out;
+    }
+
+    .sidebar-no-animations #main-container,
+    .sidebar-no-animations.header-fixed-top header.navbar-fixed-top,
+    .sidebar-no-animations.header-fixed-bottom header.navbar-fixed-bottom,
+    .sidebar-no-animations.footer-fixed #page-content + footer {
+        -webkit-transition: none;
+        transition: none;
+    }
+
+    /* Reset sidebar classes used only on small screens */
+    .sidebar-visible-xs #sidebar,
+    .sidebar-alt-visible-xs #sidebar-alt {
+        width: 0;
+    }
+
+    .sidebar-visible-xs #main-container,
+    .sidebar-alt-visible-xs #main-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .sidebar-visible-xs.header-fixed-top header.navbar-fixed-top,
+    .sidebar-visible-xs.header-fixed-bottom header.navbar-fixed-bottom,
+    .sidebar-alt-visible-xs.header-fixed-top header.navbar-fixed-top,
+    .sidebar-alt-visible-xs.header-fixed-bottom header.navbar-fixed-bottom,
+    .sidebar-visible-xs.footer-fixed #page-content + footer,
+    .sidebar-alt-visible-xs.footer-fixed #page-content + footer {
+        right: 0;
+        left: 0;
+    }
+
+    /* Both Sidebars */
+    #sidebar,
+    #sidebar-alt,
+    .sidebar-partial #sidebar,
+    .sidebar-alt-partial #sidebar-alt {
+        width: 0;
+        opacity: 0.2;
+    }
+
+    .sidebar-partial #sidebar,
+    .sidebar-alt-partial #sidebar-alt {
+        width: @width_sidebar_partial;
+    }
+
+    .sidebar-partial #sidebar:hover,
+    .sidebar-visible-lg #sidebar,
+    .sidebar-visible-lg.sidebar-partial #sidebar,
+    .sidebar-alt-partial #sidebar-alt:hover,
+    .sidebar-alt-visible-lg #sidebar-alt,
+    .sidebar-alt-visible-lg.sidebar-alt-partial #sidebar-alt {
+        width: @width_sidebar;
+        opacity: 1;
+    }
+
+    .sidebar-partial #sidebar .sidebar-brand i,
+    .sidebar-alt-partial #sidebar-alt .sidebar-brand i {
+        display: none;
+    }
+
+    .sidebar-partial #sidebar:hover .sidebar-brand i,
+    .sidebar-visible-lg #sidebar .sidebar-brand i,
+    .sidebar-alt-partial #sidebar-alt:hover .sidebar-brand i,
+    .sidebar-alt-visible-lg #sidebar-alt .sidebar-brand i {
+        display: inline-block;
+    }
+
+    /* Main Sidebar */
+    .sidebar-partial #main-container {
+        margin-left: @width_sidebar_partial;
+    }
+
+    .sidebar-partial #sidebar:hover + #main-container,
+    .sidebar-visible-lg #main-container {
+        margin-left: @width_sidebar;
+    }
+
+    .sidebar-partial.footer-fixed #main-container #page-content + footer,
+    .sidebar-partial.header-fixed-top header.navbar-fixed-top,
+    .sidebar-partial.header-fixed-bottom header.navbar-fixed-bottom {
+        left: @width_sidebar_partial;
+    }
+
+    .sidebar-partial #sidebar:hover + #main-container header.navbar-fixed-top,
+    .sidebar-partial #sidebar:hover + #main-container header.navbar-fixed-bottom,
+    .sidebar-partial #sidebar:hover + #main-container #page-content + footer,
+    .sidebar-visible-lg.header-fixed-top header.navbar-fixed-top,
+    .sidebar-visible-lg.header-fixed-bottom header.navbar-fixed-bottom,
+    .sidebar-visible-lg.footer-fixed #main-container #page-content + footer {
+        left: @width_sidebar;
+    }
+
+    /* Alternative Sidebar */
+    .sidebar-alt-partial #main-container {
+        margin-right: @width_sidebar_partial;
+    }
+
+    .sidebar-alt-partial #sidebar-alt:hover ~ #main-container,
+    .sidebar-alt-visible-lg #main-container {
+        margin-right: @width_sidebar;
+    }
+
+    .sidebar-alt-partial.footer-fixed #main-container #page-content + footer,
+    .sidebar-alt-partial.header-fixed-top header.navbar-fixed-top,
+    .sidebar-alt-partial.header-fixed-bottom header.navbar-fixed-bottom {
+        right: @width_sidebar_partial;
+    }
+
+    .sidebar-alt-partial #sidebar-alt:hover ~ #main-container header.navbar-fixed-top,
+    .sidebar-alt-partial #sidebar-alt:hover ~ #main-container header.navbar-fixed-bottom,
+    .sidebar-alt-partial #sidebar-alt:hover ~ #main-container #page-content + footer,
+    .sidebar-alt-visible-lg.header-fixed-top header.navbar-fixed-top,
+    .sidebar-alt-visible-lg.header-fixed-bottom header.navbar-fixed-bottom,
+    .sidebar-alt-visible-lg.footer-fixed #main-container #page-content + footer {
+        right: @width_sidebar;
+    }
+
+    /* Main Sidebar - Mini mode */
+    .sidebar-mini.sidebar-visible-lg-mini #main-container {
+        margin-left: 40px;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #main-container header.navbar-fixed-top,
+    .sidebar-mini.sidebar-visible-lg-mini #main-container header.navbar-fixed-bottom,
+    .sidebar-mini.sidebar-visible-lg-mini #main-container #page-content + footer {
+        left: 40px;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar {
+        overflow: visible;
+        opacity: 1;
+        z-index: 1029;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-content {
+        width: 40px;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav-mini-hide,
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-header > span {
+        display: none;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-header {
+        padding: 0;
+        margin: 5px 0;
+        border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav li {
+        position: relative;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav .sidebar-nav-menu + ul {
+        position: absolute;
+        width: 220px;
+        top: 0;
+        right: -220px;
+        margin: 0;
+        padding: 6px 5px;
+        border-left: 3px solid @color_highlight;
+        background-color: @color_dark;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav ul a {
+        margin: 0;
+        padding-left: 10px;
+        border-left: none;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav ul ul {
+        margin-left: 0;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav > li.active > ul {
+        display: none;
+    }
+
+    .sidebar-mini.sidebar-visible-lg-mini #sidebar .sidebar-nav .sidebar-nav-menu.open + ul {
+        display: block !important;
+    }
+
+    /* Nav Horizontal */
+    .nav-horizontal a {
+        text-align: center;
+        min-width: 130px;
+        padding: 12px 15px;
+    }
+
+    .nav-horizontal i {
+        display: block;
+        height: 55px;
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 42px;
+        padding: 10px;
+    }
+}
+
+/* Large devices, Desktops (>1199px) */
+@media screen and (min-width: 1200px) {
+
+    /* Main Layout */
+    .header-fixed-top .sidebar-content,
+    .header-fixed-bottom .sidebar-content {
+        padding-bottom: 0;
+    }
+
+    /* General */
+    article p {
+        font-size: 19px;
+        line-height: 1.9;
+    }
+}
+
+/*
+=================================================================
+RETINA
+=================================================================
+*/
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    /* If you did use a CSS image background, you can put your high resolution image here */
+
+}
+
+/*
+=================================================================
+PRINT
+=================================================================
+*/
+
+@media print {
+    #sidebar, #sidebar-alt, .content-header, .breadcrumb-top, .block-title .block-options, #page-content + footer, #to-top {display: none !important;}
+    #page-content {min-height: 0 !important; height: auto !important; padding: 0 !important;}
+    #main-container {margin: 0 !important;}
+    .block, .block.full {border: none !important; padding: 0 !important;}
+    .block-title {margin: 0 0 20px !important;}
+}

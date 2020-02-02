@@ -1,0 +1,222 @@
+/*
+ *  Document   : layout.less
+ *  Author     : pixelcave
+ *
+ *  MAIN LAYOUT
+ *  Template’s main layout styles
+ *
+ */
+
+/* Include Open Sans font from Google Web Fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,600italic,700,700italic');
+
+/* Preloader */
+#page-wrapper.page-loading {
+    overflow: hidden;
+}
+
+#page-wrapper.page-loading .preloader {
+    display: block;
+}
+
+#page-wrapper.page-loading #page-container {
+    opacity: 0;
+}
+
+.preloader {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333333;
+    z-index: 99999;
+}
+
+.preloader .inner {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin: 0 0 0 -50px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+.preloader-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid transparent;
+    border-left-color: #ffffff;
+    border-right-color: #ffffff;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner .4s linear infinite;
+    -moz-animation: nprogress-spinner .4s linear infinite;
+    -ms-animation: nprogress-spinner .4s linear infinite;
+    -o-animation: nprogress-spinner .4s linear infinite;
+    animation: nprogress-spinner .4s linear infinite;
+}
+
+.preloader-spinner {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-width: 3px;
+}
+
+/* Main Structure */
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: @color_dark;
+    font-size: 13px;
+    background-color: #222222;
+}
+
+#page-container,
+#main-container,
+#page-content + footer {
+    min-width: 320px;
+}
+
+#page-container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: hidden;
+    -webkit-transition: background-color 0.2s ease-out, opacity 0.3s ease-out;
+    transition: background-color 0.2s ease-out, opacity 0.3s ease-out;
+}
+
+#page-container,
+#sidebar,
+#sidebar-alt {
+    background-color: @color_dark;
+}
+
+#sidebar,
+#sidebar-alt {
+    width: 0;
+    position: absolute;
+    overflow: hidden;
+}
+
+#sidebar-alt {
+    right: 0;
+}
+
+#sidebar,
+#sidebar-alt,
+#main-container,
+.header-fixed-top header,
+.header-fixed-bottom header,
+.footer-fixed #page-content + footer {
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+#page-content {
+    padding: 10px 5px 1px;
+    background-color: @color_light_main;
+}
+
+#page-content + footer {
+    padding: 9px 10px;
+    font-size: 11px;
+    background-color: #ffffff;
+    border-top: 1px solid @color_light_secondary;
+}
+
+/* Fixed Header */
+#page-container.header-fixed-top {
+    padding: 50px 0 0;
+}
+
+#page-container.header-fixed-bottom {
+    padding: 0 0 50px;
+}
+
+/* Sidebar + Static Header */
+.sidebar-visible-xs #sidebar {
+    width: @width_sidebar;
+}
+
+.sidebar-visible-xs #main-container {
+    margin-left: @width_sidebar;
+    margin-right: -@width_sidebar;
+}
+
+/* Sidebar + Fixed Header */
+.header-fixed-top #sidebar,
+.header-fixed-bottom #sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.header-fixed-top .sidebar-content,
+.header-fixed-bottom .sidebar-content {
+    padding-bottom: 50px;
+}
+
+.sidebar-visible-xs.header-fixed-top header.navbar-fixed-top,
+.sidebar-visible-xs.header-fixed-bottom header.navbar-fixed-bottom {
+    left: @width_sidebar;
+    right: -@width_sidebar;
+}
+
+/* Alternative Sidebar + Static Header */
+.sidebar-alt-visible-xs #sidebar-alt {
+    width: @width_sidebar;
+}
+
+.sidebar-alt-visible-xs #main-container {
+    margin-right: @width_sidebar;
+    margin-left: -@width_sidebar;
+}
+
+/* Alternative Sidebar + Fixed Header */
+.header-fixed-top #sidebar-alt,
+.header-fixed-bottom #sidebar-alt {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar-alt-visible-xs.header-fixed-top header.navbar-fixed-top,
+.sidebar-alt-visible-xs.header-fixed-bottom header.navbar-fixed-bottom {
+    right: @width_sidebar;
+    left: -@width_sidebar;
+}
+
+/* Fixed Footer */
+.footer-fixed #page-content + footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.footer-fixed #page-content {
+    padding-bottom: 41px;
+}
+
+.footer-fixed.sidebar-visible-xs #page-content + footer {
+    right: -@width_sidebar;
+    left: @width_sidebar;
+}
+
+.footer-fixed.sidebar-alt-visible-xs #page-content + footer {
+    right: @width_sidebar;
+    left: -@width_sidebar;
+}
+
+.footer-fixed.header-fixed-bottom #page-content + footer {
+    bottom: 50px;
+}

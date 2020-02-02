@@ -20,8 +20,26 @@ def news_detail(request,word):
     lastnews = News.objects.all().order_by('-pk')[:3]   ### This query for last three post
 
     shownews = News.objects.filter(name=word)
+    popnews = News.objects.all().order_by('-show')    ### Populer News Details will be Shown according to view(show)
+
+    popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
+
+    tagname = News.objects.get(name=word).tag    ### For tags
+    tag = tagname.split(',')   ## It will divide your tags by comma(,). Can also by space or dot or what i want
+
+    ### Count the total view start ###
+    try :
+
+        mynews = News.objects.get(name=word)
+        mynews.show = mynews.show + 1
+        mynews.save()
+
+    except :
+
+        print("Can't Add Show")
+    ### Count the total view end ###
     
-    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews})
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag})
 ###-----#-----### News Details End ###-----#-----###
 
 
@@ -72,6 +90,8 @@ def news_add(request):
         newstxt = request.POST.get('newstxt')               # newstxt is a pk.
         newsid = request.POST.get('newscat')                # newsid is a pk.
 
+        tag = request.POST.get('tag')   ### This query for tag field
+
         if newstitle == "" or newstxtshort == "" or newstxt == "" or newscat == "":
             error = "All Fields Required"
             return render(request, 'back/error.html', {'error':error})
@@ -92,7 +112,7 @@ def news_add(request):
 
                     ocatid = SubCat.objects.get(pk=newsid).catid   # get the total news for count news.
 
-                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer="-", catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid)  # these are the model fields
+                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer="-", catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag)  # these are the model fields
                     b.save()
 
                     count = len(News.objects.filter(ocatid=ocatid))     # for count news
@@ -181,6 +201,8 @@ def news_edit(request, pk):
         newstxt = request.POST.get('newstxt')               # newstxt is a pk.
         newsid = request.POST.get('newscat')                # newsid is a pk.
 
+        tag = request.POST.get('tag')   ### This query for tag field
+
         if newstitle == "" or newstxtshort == "" or newstxt == "" or newscat == "":
             error = "All Fields Required"
             return render(request, 'back/error.html', {'error':error})
@@ -214,6 +236,8 @@ def news_edit(request, pk):
                     b.catname = newsname
                     b.catid = newsid
 
+                    b.tag = tag   ### This query for tag
+
                     b.save()
                     return redirect('news_list')
                 else:
@@ -238,6 +262,8 @@ def news_edit(request, pk):
             b.body_txt = newstxt
             b.catname = newsname
             b.catid = newsid
+
+            b.tag = tag   ### This query for tag
 
             b.save()
             return redirect('news_list')

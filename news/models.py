@@ -16,6 +16,7 @@ class News(models.Model):
     catid = models.IntegerField(default=0)
     ocatid = models.IntegerField(default=0)  # ocatid means original cat id.for count news
     show = models.IntegerField(default=0)   # default=0 for integer field-when i use this in existing models
+    tag = models.TextField(default="")   # For tag (Filtering)
 
         
     def __str__(self):

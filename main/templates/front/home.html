@@ -108,23 +108,27 @@
 
 							</div>
 
+		<!-- Popular post start, popular post will shown the right side of the related categories Start -->
 							<div class="col-sm-6 p-r-25 p-r-15-sr991">
-								<!-- Item post -->
+							<!-- Popular news according to show(view) Satrt -->
+								{% for pop in popnews %}
+								{% if pop.ocatid == newscat.pk %}
+								{% if pop.show != 0 %}  <!-- When anyone click/view the news, it will appear. Otherwise not appear -->
 								<div class="flex-wr-sb-s m-b-30">
-									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
+									<a href="{% url 'news_detail' word=pop.name %}" class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="{{ pop.picurl }}" alt="IMG">
 									</a>
 
 									<div class="size-w-2">
 										<h5 class="p-b-5">
-											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
+											<a href="{% url 'news_detail' word=pop.name %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+												{{ pop.name }}
 											</a>
 										</h5>
 
 										<span class="cl8">
 											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Beachs
+												{{ pop.catname }}
 											</a>
 
 											<span class="f1-s-3 m-rl-3">
@@ -132,73 +136,21 @@
 											</span>
 
 											<span class="f1-s-3">
-												Feb 17
+												{{ pop.date }}
 											</span>
 										</span>
 									</div>
 								</div>
-
-								<!-- Item post -->
-								<div class="flex-wr-sb-s m-b-30">
-									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
-									</a>
-
-									<div class="size-w-2">
-										<h5 class="p-b-5">
-											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
-											</a>
-										</h5>
-
-										<span class="cl8">
-											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Flight
-											</a>
-
-											<span class="f1-s-3 m-rl-3">
-												-
-											</span>
-
-											<span class="f1-s-3">
-												Feb 16
-											</span>
-										</span>
-									</div>
-								</div>
-
-								<!-- Item post -->
-								<div class="flex-wr-sb-s m-b-30">
-									<a href="blog-detail-02.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-										<img src="{% static 'front/images/latest-01.jpg' %}" alt="IMG">
-									</a>
-
-									<div class="size-w-2">
-										<h5 class="p-b-5">
-											<a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
-											</a>
-										</h5>
-
-										<span class="cl8">
-											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Flight
-											</a>
-
-											<span class="f1-s-3 m-rl-3">
-												-
-											</span>
-
-											<span class="f1-s-3">
-												Feb 16
-											</span>
-										</span>
-									</div>
-								</div>
-
+								{% endif %}
+								{% endif %}
+								{% endfor %}
+							<!-- Popular news according to show(view) End -->						
 
 							</div>
-						</div>
+		<!-- Popular post start, popular post will shown the right side of the related categories Start -->
+						
+			
+			</div>
 					</div>
 					{% endif %}
 					{% endfor %}

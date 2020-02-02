@@ -16,9 +16,14 @@ def home(request):
 
     cat = Cat.objects.all()  ## Show categories in footer
     subcat = SubCat.objects.all()  ## for SubMenu in the menu bar
+    
     lastnews = News.objects.all().order_by('-pk')[:3]   ### This query for last three post
 
-    return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews})
+    popnews = News.objects.all().order_by('-show')    ### Populer News will be Shown according to view(show)
+
+    popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
+
+    return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2})
 
 
 def about(request):

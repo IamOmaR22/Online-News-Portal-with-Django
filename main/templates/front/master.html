@@ -299,16 +299,15 @@
 
 				<!-- Dynamic Popular Post in Footer Section Start -->
 						<ul>
-
 							{% for pop in popnews2 %}
 							<li class="flex-wr-sb-s p-b-20">
-								<a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+								<a href="{% url 'news_detail' word=pop.name %}" class="size-w-4 wrap-pic-w hov1 trans-03">
 									<img src="{{ pop.picurl }}" alt="IMG">
 								</a>
 
 								<div class="size-w-5">
 									<h6 class="p-b-5">
-										<a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+										<a href="{% url 'news_detail' word=pop.name %}" class="f1-s-5 cl11 hov-cl10 trans-03">
 											{{ pop.name }}
 										</a>
 									</h6>
@@ -319,7 +318,6 @@
 								</div>
 							</li>
 							{% endfor %}
-
 						</ul>
 				<!-- Dynamic Popular Post in Footer Section End -->
 					</div>

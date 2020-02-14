@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="headline bg0 flex-wr-sb-c p-rl-20 p-tb-8">
 			<div class="f2-s-1 p-r-30 m-tb-6">
-				<a href="index.html" class="breadcrumb-item f1-s-3 cl9">
+				<a href="/" class="breadcrumb-item f1-s-3 cl9">
 					Home 
 				</a>
 
@@ -61,10 +61,10 @@
 					</div>
 				</div>
 				
-				<!-- Sidebar -->
+			<!-- Sidebar for Popular news in about page Start -->
 				<div class="col-md-5 col-lg-4 p-b-30">
 					<div class="p-l-10 p-rl-0-sr991 p-t-5">
-						<!-- Popular Posts -->
+					<!-- Popular Posts in about page Start -->
 						<div>
 							<div class="how2 how2-cl4 flex-s-c">
 								<h3 class="f1-m-2 cl3 tab01-title">
@@ -73,21 +73,24 @@
 							</div>
 
 							<ul class="p-t-35">
+
+						<!-- Dynamic Popular Post on the Sidebar(Right side) in about page Start -->	
+								{% for pop in popnews2 %}
 								<li class="flex-wr-sb-s p-b-30">
-									<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-										<img src="images/popular-post-04.jpg" alt="IMG">
+									<a href="{% url 'news_detail' word=pop.name %}" class="size-w-10 wrap-pic-w hov1 trans-03">
+										<img src="{{ pop.picurl }}" alt="IMG">
 									</a>
 
 									<div class="size-w-11">
 										<h6 class="p-b-4">
-											<a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
+											<a href="{% url 'news_detail' word=pop.name %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+												{{ pop.name }}
 											</a>
 										</h6>
 
 										<span class="cl8 txt-center p-b-24">
 											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Music
+												{{ pop.catname }}
 											</a>
 
 											<span class="f1-s-3 m-rl-3">
@@ -95,71 +98,20 @@
 											</span>
 
 											<span class="f1-s-3">
-												Feb 18
+												{{ pop.date }}
 											</span>
 										</span>
 									</div>
 								</li>
+								{% endfor %}
+						<!-- Dynamic Popular Post on the Sidebar(Right side) in about page End -->
 
-								<li class="flex-wr-sb-s p-b-30">
-									<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-										<img src="images/popular-post-05.jpg" alt="IMG">
-									</a>
-
-									<div class="size-w-11">
-										<h6 class="p-b-4">
-											<a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
-											</a>
-										</h6>
-
-										<span class="cl8 txt-center p-b-24">
-											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Game
-											</a>
-
-											<span class="f1-s-3 m-rl-3">
-												-
-											</span>
-
-											<span class="f1-s-3">
-												Feb 16
-											</span>
-										</span>
-									</div>
-								</li>
-
-								<li class="flex-wr-sb-s p-b-30">
-									<a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
-										<img src="images/popular-post-06.jpg" alt="IMG">
-									</a>
-
-									<div class="size-w-11">
-										<h6 class="p-b-4">
-											<a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
-												Donec metus orci, malesuada et lectus vitae
-											</a>
-										</h6>
-
-										<span class="cl8 txt-center p-b-24">
-											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
-												Celebrity
-											</a>
-
-											<span class="f1-s-3 m-rl-3">
-												-
-											</span>
-
-											<span class="f1-s-3">
-												Feb 12
-											</span>
-										</span>
-									</div>
-								</li>
 							</ul>
 						</div>
+					<!-- Popular Posts in about page End -->
 					</div>
 				</div>
+			<!-- Sidebar for Popular news in about page End -->	
 			</div>
 		</div>
 	</section>

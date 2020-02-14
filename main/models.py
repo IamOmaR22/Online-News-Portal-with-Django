@@ -5,7 +5,8 @@ from django.db import models
 
 class Main(models.Model):
     name = models.CharField(max_length=50)
-    about = models.TextField()  # default="-"
+    about = models.TextField()  # this is for footer  (default="-")
+    abouttxt = models.TextField(default="")    ## About page text
     fb = models.CharField(default="-", max_length=50)
     tw = models.CharField(default="-", max_length=50)
     yt = models.CharField(default="-", max_length=50)

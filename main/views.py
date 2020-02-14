@@ -163,3 +163,28 @@ def site_setting(request):
     site = Main.objects.get(pk=2)
 
     return render(request, 'back/setting.html', {'site':site})
+
+
+##-#-## Text Change in About Page(Change from admin panel) Start ##-#-##
+def about_setting(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    if request.method == 'POST':
+        txt = request.POST.get('txt')
+
+        if txt == "":   ## when text is empty, it will show the error page
+            error = "All Fields Required"
+            return render(request, 'back/error.html', {'error':error})
+
+        b = Main.objects.get(pk=2)
+        b.abouttxt = txt
+        b.save()
+
+    about = Main.objects.get(pk=2).abouttxt  ## abouttxt is model field name
+
+    return render(request, 'back/about_setting.html', {'about': about})
+##-#-## Text Change in About Page(change from admin panel) End ##-#-##

@@ -1,11 +1,10 @@
 {% load static %}
 
 
-{% if user.is_authenticated %}  <!-- Lock admin page -->
+{% if user.is_authenticated %}  <!-- Lock admin page Start -->
 
 <!DOCTYPE html>
-<!--[if IE 9]>         <html class="no-js lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+ <html class="no-js" lang="en"> 
     <head>
         <meta charset="utf-8">
 
@@ -16,7 +15,7 @@
         <meta name="robots" content="noindex, nofollow">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
 
-        <!-- Icons -->
+        <!-- Icons Start -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="shortcut icon" href="{% static 'back/img/favicon.png' %}">
         <link rel="apple-touch-icon" href="{% static 'back/img/icon57.png' %}" sizes="57x57">
@@ -27,7 +26,7 @@
         <link rel="apple-touch-icon" href="{% static 'back/img/icon144.png' %}" sizes="144x144">
         <link rel="apple-touch-icon" href="{% static 'back/img/icon152.png' %}" sizes="152x152">
         <link rel="apple-touch-icon" href="{% static 'back/img/icon180.png' %}" sizes="180x180">
-        <!-- END Icons -->
+        <!-- Icons End -->
 
         <!-- Stylesheets -->
         <!-- Bootstrap is included in its original form, unaltered -->
@@ -48,24 +47,19 @@
         <!-- Modernizr (browser feature detection library) -->
         <script src="{% static 'back/js/vendor/modernizr.min.js' %}"></script>
 
-    <!-- Add Editor(CKEditor) for News Add Page Start -->
+        
+    <!-- Add Editor(CKEditor) for News Add Page(Add News) Start -->
         {% block headblock %}
         {% endblock %}
-    <!-- Add Editor(CKEditor) for News Add Page Start -->
+    <!-- Add Editor(CKEditor) for News Add Page(Add News) End -->
+
 
     </head>
     <body>
-        <!-- Page Wrapper -->
-        <!-- In the PHP version you can set the following options from inc/config file -->
-        <!--
-            Available classes:
-
-            'page-loading'      enables page preloader
-        -->
+    <!-- Page Wrapper Start -->
         <div id="page-wrapper">
-            <!-- Preloader -->
-            <!-- Preloader functionality (initialized in js/app.js) - pageLoading() -->
-            <!-- Used only if page preloader is enabled from inc/config (PHP version) or the class 'page-loading' is added in #page-wrapper element (HTML version) -->
+
+        <!-- Preloader Start(Preloaders are important interface elements that let visitors know that the website hasn't crashed, it's just processing data) -->
             <div class="preloader themed-background">
                 <h1 class="push-top-bottom text-light text-center"><strong>Admin</strong>Panel</h1>
                 <div class="inner">
@@ -73,55 +67,25 @@
                     <div class="preloader-spinner hidden-lt-ie10"></div>
                 </div>
             </div>
-            <!-- END Preloader -->
+        <!-- Preloader End(Preloaders are important interface elements that let visitors know that the website hasn't crashed, it's just processing data) -->
 
-            <!-- Page Container -->
-            <!-- In the PHP version you can set the following options from inc/config file -->
-            <!--
-                Available #page-container classes:
-
-                '' (None)                                       for a full main and alternative sidebar hidden by default (> 991px)
-
-                'sidebar-visible-lg'                            for a full main sidebar visible by default (> 991px)
-                'sidebar-partial'                               for a partial main sidebar which opens on mouse hover, hidden by default (> 991px)
-                'sidebar-partial sidebar-visible-lg'            for a partial main sidebar which opens on mouse hover, visible by default (> 991px)
-                'sidebar-mini sidebar-visible-lg-mini'          for a mini main sidebar with a flyout menu, enabled by default (> 991px + Best with static layout)
-                'sidebar-mini sidebar-visible-lg'               for a mini main sidebar with a flyout menu, disabled by default (> 991px + Best with static layout)
-
-                'sidebar-alt-visible-lg'                        for a full alternative sidebar visible by default (> 991px)
-                'sidebar-alt-partial'                           for a partial alternative sidebar which opens on mouse hover, hidden by default (> 991px)
-                'sidebar-alt-partial sidebar-alt-visible-lg'    for a partial alternative sidebar which opens on mouse hover, visible by default (> 991px)
-
-                'sidebar-partial sidebar-alt-partial'           for both sidebars partial which open on mouse hover, hidden by default (> 991px)
-
-                'sidebar-no-animations'                         add this as extra for disabling sidebar animations on large screens (> 991px) - Better performance with heavy pages!
-
-                'style-alt'                                     for an alternative main style (without it: the default style)
-                'footer-fixed'                                  for a fixed footer (without it: a static footer)
-
-                'disable-menu-autoscroll'                       add this to disable the main menu auto scrolling when opening a submenu
-
-                'header-fixed-top'                              has to be added only if the class 'navbar-fixed-top' was added on header.navbar
-                'header-fixed-bottom'                           has to be added only if the class 'navbar-fixed-bottom' was added on header.navbar
-
-                'enable-cookies'                                enables cookies for remembering active color theme when changed from the sidebar links
-            -->
+        <!-- Page Container Start -->
             <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
  
 
-                <!-- Main Sidebar -->
+            <!-- Main Sidebar Start -->
                 <div id="sidebar">
-                    <!-- Wrapper for scrolling functionality -->
+                <!-- Wrapper for scrolling functionality(Sidebar Scrolling) Start -->
                     <div id="sidebar-scroll">
-                        <!-- Sidebar Content -->
+                    <!-- Sidebar Content Start -->
                         <div class="sidebar-content">
-                            <!-- Brand -->
+                        <!-- Brand for sidebar Start -->
                             <a href="/panel" class="sidebar-brand">
                                 <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>Admin</strong>Panel</span>
                             </a>
-                            <!-- END Brand -->
+                        <!-- Brand for sidebar End -->
 
-                            <!-- User Info -->
+                        <!-- User Information Start -->
                             <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
                                 <div class="sidebar-user-avatar">
                                     <a href="page_ready_user_profile.html">
@@ -132,20 +96,19 @@
                                 <div class="sidebar-user-links">
                                     <a href="page_ready_user_profile.html" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="gi gi-user"></i></a>
                                     <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
-                                    <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
                                     <a href="javascript:void(0)" class="enable-tooltip" data-placement="bottom" title="Settings" onclick="$('#modal-user-settings').modal('show');"><i class="gi gi-cogwheel"></i></a>
                                     <a href="/logout" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="gi gi-exit"></i></a>
                                 </div>
                             </div>
-                            <!-- END User Info -->
+                        <!-- User Information End -->
 
 
 
-                            <!-- Sidebar Navigation -->
-                            <ul class="sidebar-nav">
-                                <li>
-                                    <a href="/panel" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
-                                </li>
+                    <!-- Sidebar Navigation(To add category, sub category, settings etc) Start -->
+                        <ul class="sidebar-nav">
+                            <li>
+                                <a href="/panel" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
+                            </li>
                                   
                         <!-- Site Settings Panel(To add all the settings) Start -->
                                 <li class="sidebar-header">
@@ -171,7 +134,7 @@
                                     <span class="sidebar-header-title">News Section</span>
                                 </li>
 
-                                <!-- Category(add and list) Start -->
+                            <!-- Category(add and list) Start -->
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
                                     <ul>
@@ -180,37 +143,37 @@
                                         </li>
 
                                         <li>
-                                            <a href="/panel/category/list">Categories List</a>
+                                            <a href="/panel/category/list">Categories List</a>   <!-- this link provided from urls.py -->
                                         </li>
-
                                     
                                     </ul>
                                 </li>
-                                <!-- Category End -->
+                            <!-- Category(add and list) End -->
 
 
-                                <!-- Sub-Category(add and list) Start -->
+                            <!-- Sub-Category(add and list) Start -->
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">SubCategory</span></a>
                                     <ul>
+
                                         <li>
                                             <a href="/panel/subcategory/add">Add SubCategory</a>  <!-- this link provided from urls.py -->
                                         </li>
 
                                         <li>
-                                            <a href="/panel/subcategory/list">SubCategories List</a>
+                                            <a href="/panel/subcategory/list">SubCategories List</a>  <!-- this link provided from urls.py -->
                                         </li>
 
-                                    
                                     </ul>
                                 </li>
-                                <!-- Sub-Category End -->
+                            <!-- Sub-Category(add and list) End -->
 
 
-                                <!-- News(add and list) Start -->
+                            <!-- News(add and list) Start -->
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">News</span></a>
                                     <ul>
+
                                         <li>
                                             <a href="/panel/news/add/">Add News</a>
                                         </li>
@@ -218,78 +181,64 @@
                                         <li>
                                             <a href="/panel/news/list/">News List</a>
                                         </li>
-
                                     
                                     </ul>
                                 </li>
-                                <!-- News End -->
+                            <!-- News(add and list) End -->
                             </ul>
-                            <!-- END Sidebar Navigation -->
+                    <!-- Sidebar Navigation(To add category, sub category, settings etc) End -->
 
 
                         </div>
-                        <!-- END Sidebar Content -->
+                    <!-- Sidebar Content End -->
                     </div>
-                    <!-- END Wrapper for scrolling functionality -->
+                <!-- Wrapper for scrolling functionality(Sidebar Scrolling) End -->
                 </div>
-                <!-- END Main Sidebar -->
+            <!-- Main Sidebar End -->
 
-                <!-- Main Container -->
+
+            <!-- Main Container Start -->
                 <div id="main-container">
-                    <!-- Header -->
-                    <!-- In the PHP version you can set the following options from inc/config file -->
-                    <!--
-                        Available header.navbar classes:
-
-                        'navbar-default'            for the default light header
-                        'navbar-inverse'            for an alternative dark header
-
-                        'navbar-fixed-top'          for a top fixed header (fixed sidebars with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar())
-                            'header-fixed-top'      has to be added on #page-container only if the class 'navbar-fixed-top' was added
-
-                        'navbar-fixed-bottom'       for a bottom fixed header (fixed sidebars with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar()))
-                            'header-fixed-bottom'   has to be added on #page-container only if the class 'navbar-fixed-bottom' was added
-                    -->
+                <!-- Header Section Start -->
                     <header class="navbar navbar-default">
-                        <!-- Left Header Navigation -->
+
+
+                    <!-- Left Header Navigation Start -->
                         <ul class="nav navbar-nav-custom">
-                            <!-- Main Sidebar Toggle Button -->
+                        <!-- Main Sidebar Toggle Button Start -->
                             <li>
                                 <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');this.blur();">
                                     <i class="fa fa-bars fa-fw"></i>
                                 </a>
                             </li>
-                            <!-- END Main Sidebar Toggle Button -->
-
-                            
+                        <!-- Main Sidebar Toggle Button End -->                           
                         </ul>
-                        <!-- END Left Header Navigation -->
+                    <!-- Left Header Navigation End -->
 
-                        <!-- Search Form -->
+
+                    <!-- Search Form Start -->
                         <form action="page_ready_search_results.html" method="post" class="navbar-form-custom">
                             <div class="form-group">
                                 <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Search..">
                             </div>
                         </form>
-                        <!-- END Search Form -->
-
+                    <!-- Search Form End -->
                         
                     </header>
-                    <!-- END Header -->
+                <!-- Header Section End -->
 
-                    <!-- Page content -->
+
+                <!-- Page Content Start -->
                     <div id="page-content">
-                        <!-- Dashboard Header -->
-                        
-
+                        <!-- Dashboard Header -->                    
                     {% block mainblock %}
+
                     {% endblock %}
-
-
                     </div>
-                    <!-- END Page Content -->
+                <!-- Page Content End -->
 
-                    <!-- Footer -->
+
+                <!-- Footer Section Start -->
                     <footer class="clearfix">
                         <div class="pull-right">
                             Crafted with <i class="fa fa-heart text-danger"></i> by <a href="" target="_blank">Md. Omar Faruk</a>
@@ -298,14 +247,18 @@
                             <span id="year-copy"></span> &copy;
                         </div>
                     </footer>
-                    <!-- END Footer -->
-                </div>
-                <!-- END Main Container -->
-            </div>
-            <!-- END Page Container -->
-        </div>
-        <!-- END Page Wrapper -->
+                <!-- Footer Section End -->
 
+                </div>
+            <!-- Main Container End -->
+
+            </div>
+        <!-- Page Container End -->
+
+        </div>
+    <!-- Page Wrapper End -->
+
+        
         <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
         <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
 
@@ -316,8 +269,7 @@
         <script src="{% static 'back/js/plugins.js' %}"></script>
         <script src="{% static 'back/js/app.js' %}"></script>
 
-        <!-- Google Maps API Key (you will have to obtain a Google Maps API key to use Google Maps) -->
-        <!-- For more info please have a look at https://developers.google.com/maps/documentation/javascript/get-api-key#key -->
+        
         <script src="https://maps.googleapis.com/maps/api/js?key="></script>
         <script src="{% static 'back/js/helpers/gmaps.min.js' %}"></script>
 
@@ -331,4 +283,4 @@
 
 Please Login
 
-{% endif %}    <!-- Lock admin page -->
+{% endif %}    <!-- Lock admin page End -->

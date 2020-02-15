@@ -68,7 +68,7 @@
 								About
 							</a>
 
-							<a href="#" class="left-topbar-item">
+							<a href="/contact" class="left-topbar-item">
 								Contact
 							</a>
 
@@ -104,10 +104,11 @@
 			
 			<!--  -->
 			<div class="wrap-logo no-banner container">
-				<!-- Logo desktop -->		
+				<!-- Logo desktop(Logo in Top Section) Start -->		
 				<div class="logo">
-					<a href="/"><img src="{{ site.picurl }}" alt="LOGO"></a>
+					<a href="/"><img src="{{ site.picurl }}" alt="LOGO"></a> <!-- Logo in Top Section -->	
 				</div>
+				<!-- Logo desktop(Logo in Top Section) End -->
 			</div>	
 			
 			<!--  -->
@@ -247,12 +248,13 @@
         
     
 
-    {% block mainblock %}
+	{% block mainblock %}
+	
     {% endblock %}
 
 
 
-	<!-- Footer -->
+<!-- Footer Section Start -->
 	<footer>
 		<div class="bg2 p-t-40 p-b-25">
 			<div class="container">
@@ -361,6 +363,7 @@
 			</div>
 		</div>
 	</footer>
+<!-- Footer Section End -->
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top" id="myBtn">

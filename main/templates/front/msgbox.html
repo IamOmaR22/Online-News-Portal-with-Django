@@ -1,0 +1,131 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Message</title>  <!-- Static title -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'front/images/icons/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'front/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'front/css/util.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'front/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+
+
+<body class="animsition">	
+<!-- Header Section Start -->
+	<header>
+		<!-- Header desktop -->
+		<div class="container-menu-desktop">
+			<div class="topbar">
+				<div class="content-topbar h-100 p-rl-30">
+					<div class="align-self-stretch size-w-0 pos-relative m-r-30">
+						<div class="f2-s-1 flex-wr-s-c s-full ab-t-l p-b-2">
+
+						</div>
+					</div>				
+				</div>
+			</div>					
+		</div>
+	</header>
+<!-- Header Section End -->   
+    
+    <br><br>
+	<!-- Page heading Section Start -->
+        <div class="container p-t-4 p-b-35">
+            <h2 class="f1-l-1 cl2">
+                Message
+            </h2>
+        </div>
+    <!-- Page heading Section End -->
+    
+    <!-- Content Section Start -->
+        <section class="bg0 p-b-110">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-12 p-b-30">
+                        <div class="p-r-10 p-r-0-sr991">
+                            
+                    <!-- Contact Me section Send Button (It will Show a message) Start -->
+                            <p class="f1-s-11 cl6 p-b-25">
+                                {{ msg }}
+                            </p>
+                    <!-- Contact Me section Send Button (It will Show a message) End -->
+                            <br>
+                        <!-- After see the message when you want to go to home page Start -->
+                            <a href="/">Back To Site</a>  <!-- if i want to go somewhere else then i need to change href -->
+                        <!-- After see the message when you want to go to home page Start -->
+                        
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </section>
+    <!-- Content Section End -->
+
+
+
+<!-- Footer Section Start -->
+	<footer>		
+		<div class="bg11">
+			<div class="container size-h-4 flex-c-c p-tb-15">
+				<span class="f1-s-1 cl0 txt-center">
+					Copyright © 2020 
+				</span>
+			</div>
+		</div>
+	</footer>
+<!-- Footer Section End -->
+
+<!-- Back to top Start -->
+	<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<span class="fas fa-angle-up"></span>
+		</span>
+	</div>
+<!-- Back to top End -->
+
+
+	<!-- Modal Video 01-->
+	<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document" data-dismiss="modal">
+			<div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+
+			<div class="wrap-video-mo-01">
+				<div class="video-mo-01">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="{% static 'front/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'front/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'front/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'front/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'front/js/main.js' %}"></script>
+
+</body>
+</html>

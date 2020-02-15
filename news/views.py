@@ -9,7 +9,7 @@ from cat.models import Cat   # To count news
 # Create your views here. 
 
 
-###-----#-----### News Details Start ###-----#-----###
+###-----#-----### News Details Function For Front (User Interface - Frontend) Start ###-----#-----###
 def news_detail(request,word):
     
     site = Main.objects.get(pk=2)
@@ -40,10 +40,10 @@ def news_detail(request,word):
     ### Count the total view end ###
     
     return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag})
-###-----#-----### News Details End ###-----#-----###
+###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 
-###-----#-----### News List Start ###-----#-----###
+###-----#-----### News List Function For Back (Admin Panel - Backend) Start ###-----#-----###
 def news_list(request):
 
     # Login check Start
@@ -54,10 +54,10 @@ def news_list(request):
     news = News.objects.all()
 
     return render(request, 'back/news_list.html', {'news':news})
-###-----#-----### News List End ###-----#-----###
+###-----#-----### News List Function For Back (Admin Panel - Backend) End ###-----#-----###
 
 
-###-----#-----### Add News Start ###-----#-----###
+###-----#-----### Add News Function For Back (Admin Panel - Backend) Start ###-----#-----###
 def news_add(request):
 
     # Login check Start
@@ -139,10 +139,10 @@ def news_add(request):
             return render(request, 'back/error.html', {'error':error})
 
     return render(request, 'back/news_add.html', {'cat':cat}) # we use this dictionary to get all the categories.
-###-----#-----### Add News End ###-----#-----###
+###-----#-----### Add News Function For Back (Admin Panel - Backend) End ###-----#-----###
 
 
-###-----#-----### Delete Records Start ###-----#-----###
+###-----#-----### Delete Records Function For Back (Admin Panel - Backend) Start ###-----#-----###
 def news_delete(request,pk):
 
     # Login check Start
@@ -172,10 +172,10 @@ def news_delete(request,pk):
         return render(request, 'back/error.html', {'error':error})
 
     return redirect('news_list')
-###-----#-----### Delete Records End ###-----#-----###
+###-----#-----### Delete Records Function For Back (Admin Panel - Backend) End ###-----#-----###
 
 
-###-----#-----### Edit Records Start ###-----#-----###
+###-----#-----### Edit Records Function For Back (Admin Panel - Backend) Start ###-----#-----###
 def news_edit(request, pk):
 
     # Login check Start
@@ -270,4 +270,4 @@ def news_edit(request, pk):
     ## take it from news add section and edit it End ##
 
     return render(request, 'back/news_edit.html', {'pk':pk, 'news':news, 'cat':cat})   # by using dictionary we send into template
-###-----#-----### Edit Records End ###-----#-----###
+###-----#-----### Edit Records Function For Back (Admin Panel - Backend) End ###-----#-----###

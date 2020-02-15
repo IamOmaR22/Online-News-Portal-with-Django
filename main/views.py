@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout  # for authenticatio
 from django.core.files.storage import FileSystemStorage  # for upload image
 # Create your views here.
 
+
+##--#--## Home Page(home) Function For Front (User Interface - Frontend) Start ##--#--##
 def home(request):
     # sitename = "MySite | Home"     
     # return render(request, 'front/home.html', {'sitename':sitename})
@@ -24,8 +26,10 @@ def home(request):
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
 
     return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2})
+##--#--## Home Page(home) Function For Front (User Interface - Frontend) End ##--#--##
 
 
+##--#--## About Page(about) Function For Front (User Interface - Frontend) Start ##--#--##
 def about(request):
 
     site = Main.objects.get(pk=2)
@@ -40,8 +44,10 @@ def about(request):
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show) in the footer section and sidebar on the right.
 
     return render(request, 'front/about.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2})
+##--#--## About Page(about) Function For Front (User Interface - Frontend) End ##--#--##
 
 
+##--#--## Panel (Admin Panel) Function For Back (Admin Panel - Backend) Start ##--#--##
 def panel(request):
 
     # Login check Start
@@ -50,8 +56,10 @@ def panel(request):
     # Login check End
 
     return render(request, 'back/home.html')
+##--#--## Panel (Admin Panel) Function For Back (Admin Panel - Backend) End ##--#--##
 
 
+##--#--## LogIn (mylogin) Function For Front (User Interface - Frontend) Start ##--#--##
 def mylogin(request):
 
     if request.method == 'POST':
@@ -69,15 +77,19 @@ def mylogin(request):
                 return redirect('panel')
 
     return render(request, 'front/login.html')
+##--#--## LogIn (mylogin) Function For Front (User Interface - Frontend) End ##--#--##
 
-
+##--#--## Log Out Start ##--#--##
 def mylogout(request):
 
     logout(request)
 
     return redirect('mylogin')
+##--#--## Log Out End ##--#--##
 
 
+
+##--#--## Site Settings (Topbar, fb/yt/tw link, logo etc) Function For Back (Admin Panel - Backend) Start ##--#--##
 def site_setting(request):
 
     # Login check Start
@@ -107,7 +119,7 @@ def site_setting(request):
             error = "All Fields Required"
             return render(request, 'back/error.html', {'error':error})
 
-        ## First logo
+        ## First logo ##
         try:
             #-#-# Upload File Start #-#-#
             myfile = request.FILES['myfile']  # upload file
@@ -125,7 +137,7 @@ def site_setting(request):
             picurl = "-"
             picname = "-"
 
-        ## Secong Logo
+        ## Second Logo ##
         try:
             #-#-# Upload File Start #-#-#
             myfile2 = request.FILES['myfile2']  # upload file
@@ -163,9 +175,10 @@ def site_setting(request):
     site = Main.objects.get(pk=2)
 
     return render(request, 'back/setting.html', {'site':site})
+##--#--## Site Settings (Topbar, fb/yt/tw link, logo etc) Function For Back (Admin Panel - Backend) End ##--#--##
 
 
-##-#-## Text Change in About Page(Change from admin panel) Start ##-#-##
+##--#--## Text Change in About Page(Change from admin panel) Start ##--#--##
 def about_setting(request):
 
     # Login check Start
@@ -187,9 +200,10 @@ def about_setting(request):
     about = Main.objects.get(pk=2).abouttxt  ## abouttxt is model field name
 
     return render(request, 'back/about_setting.html', {'about': about})
-##-#-## Text Change in About Page(change from admin panel) End ##-#-##
+##--#--## Text Change in About Page(change from admin panel) End ##--#--##
 
 
+##--#--## Contact Page (contact) Function For Front (User Interface - Frontend) Start ##--#--##
 def contact(request):
     ##--## For Logo, Categories, Sub-Categories, Footer etc Start ##--##
     site = Main.objects.get(pk=2)
@@ -201,3 +215,4 @@ def contact(request):
     ##--## For Logo, Categories, Sub-Categories, Footer etc End ##--##
 
     return render(request, 'front/contact.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2})
+##--#--## Contact Page (contact) Function For Front (User Interface - Frontend) End ##--#--##    

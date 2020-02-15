@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     
-    url(r'^admin/' , admin.site.urls),
+    url(r'^admin/' , admin.site.urls),      # Django Default Admin Panel
     url(r'', include('main.urls')),         # here main is an app name
     url(r'', include('news.urls')),         # here news is an app name
     url(r'', include('cat.urls')),          # here cat is an app name

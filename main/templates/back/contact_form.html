@@ -1,0 +1,76 @@
+
+{% extends 'back/master.html' %}
+
+{% load static %}
+
+{% block mainblock %}
+<!-- Data tables Header Start -->
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="fa fa-table"></i>Message List<br><small>You can add, edit and delete your data!</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Message</li>
+    <li><a href="/panel/contactform/">List</a></li>
+</ul>
+<!-- Data tables Header End -->
+
+
+
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Message</strong> List</h2>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+            
+        <!-- Heading Of The Contact Form (Message Show) Start -->    
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Date & Time</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+        <!-- Heading Of The Contact Form (Message Show) End -->     
+            <tbody>
+
+            <!-- Dynamic Contact Show Form (Message Will Show Here) Start -->
+                {% for cc in msg %}
+                <tr>
+                    <td class="text-center">{{ cc.pk }}</td>  
+                    <td>{{ cc.date }} | {{ cc.time }}</td>                  
+                    <td>{{ cc.name }}</td>
+                    <td>{{ cc.email }}</td>
+                    <td>{{ cc.txt }}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="#" data-toggle="tooltip" title="Answer" class="btn btn-xs btn-default"><i > Answer</i></a>
+                            <a href="{% url 'contact_del' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            <!-- Dynamic Contact Show Form (Message Will Show Here) End -->
+           
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END Datatables Content -->
+{% endblock %}
+
+
+{% block footerblock %}
+<!-- Load and execute javascript code used only in this page -->
+<script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
+        {% endblock %}

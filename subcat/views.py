@@ -3,7 +3,7 @@ from .models import SubCat
 from cat.models import Cat
 
 # Create your views here.
-###### Sub Category List Start ########
+###---#---### Sub Category List Function For Back (Admin Panel - Backend) Start ####--#--####
 def subcat_list(request):
 
     # Login check Start
@@ -14,10 +14,10 @@ def subcat_list(request):
     subcat = SubCat.objects.all()
 
     return render(request, 'back/subcat_list.html', {'subcat':subcat})
-###### Sub Category List End ########
+###--#--### Sub Category List Function For Back (Admin Panel - Backend) End ####--#--####
 
 
-###### Sub Category Add Start ########
+###--#--### Sub Category Add Function For Back (Admin Panel - Backend) Start ###--#--###
 def subcat_add(request):
 
     # Login check Start
@@ -47,8 +47,7 @@ def subcat_add(request):
         b.save()
         return redirect('subcat_list')   # subcat_list function
         #### By deafult set category End ####
-
         
-# {'cat':cat}, for dynamic category.This cat query will be used in subcat_add.html file for dynamic.
+    ## {'cat':cat}, for dynamic category.This cat query will be used in subcat_add.html file for dynamic.
     return render(request, 'back/subcat_add.html', {'cat':cat})   
-###### Sub Category Add End ########
+###--#--### Sub Category Add Function For Back (Admin Panel - Backend) End ###--#--###

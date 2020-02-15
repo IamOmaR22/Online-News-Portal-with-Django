@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Cat 
 
 # Create your views here.
-###### Category List Start ########
+###--#--### Category List Function For Back (Admin Panel - Backend) Start ###--#--###
 def cat_list(request):
 
     # Login check Start
@@ -13,10 +13,10 @@ def cat_list(request):
     cat = Cat.objects.all()
 
     return render(request, 'back/cat_list.html', {'cat':cat})
-###### Category List End ########
+###--#--### Category List Function For Back (Admin Panel - Backend) End ###--#--###
 
 
-###### Category Add Start ########
+###--#--### Category Add Function For Back (Admin Panel - Backend) Start ###--#--###
 def cat_add(request):
 
     # Login check Start
@@ -42,4 +42,4 @@ def cat_add(request):
         return redirect('cat_list')
     
     return render(request, 'back/cat_add.html')
-###### Category Add End ########
+###--#--### Category Add Function For Back (Admin Panel - Backend) End ###--#--###

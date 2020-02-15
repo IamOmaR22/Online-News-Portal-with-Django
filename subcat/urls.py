@@ -3,8 +3,8 @@ from .import views
 
 urlpatterns = [
 
-    url(r'^panel/subcategory/list/$', views.subcat_list, name='subcat_list'),
-    url(r'^panel/subcategory/add/$', views.subcat_add, name='subcat_add'),
+    url(r'^panel/subcategory/list/$', views.subcat_list, name='subcat_list'),   ## Admin Panel Subcategory List
+    url(r'^panel/subcategory/add/$', views.subcat_add, name='subcat_add'),      ## Admin Panel Add Subcategory
             
 ]                                                                               
 

@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'', include('news.urls')),         # here news is an app name
     url(r'', include('cat.urls')),          # here cat is an app name
     url(r'', include('subcat.urls')),       # here subcat is an app name
+    url(r'', include('contactform.urls')),       # here contactform is an app name
 ]
 
 if settings.DEBUG:

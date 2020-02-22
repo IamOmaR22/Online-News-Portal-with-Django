@@ -5,6 +5,8 @@ from cat.models import Cat  # for showing categories in footer
 from subcat.models import SubCat  ## for SubMenu in the menu bar
 from django.contrib.auth import authenticate, login, logout  # for authentication
 from django.core.files.storage import FileSystemStorage  # for upload image
+from trending.models import Trending  ### Trending app's model
+
 # Create your views here.
 
 
@@ -25,7 +27,9 @@ def home(request):
 
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
 
-    return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2})
+    trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
+
+    return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2, 'trending':trending})
 ##--#--## Home Page(home) Function For Front (User Interface - Frontend) End ##--#--##
 
 
@@ -43,7 +47,9 @@ def about(request):
 
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show) in the footer section and sidebar on the right.
 
-    return render(request, 'front/about.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2})
+    trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
+
+    return render(request, 'front/about.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2, 'trending':trending})
 ##--#--## About Page(about) Function For Front (User Interface - Frontend) End ##--#--##
 
 
@@ -213,6 +219,7 @@ def contact(request):
     lastnews = News.objects.all().order_by('-pk')[:3]   ### This query for last three post
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show) in the footer section and sidebar on the right.
     ##--## For Logo, Categories, Sub-Categories, Footer etc End ##--##
+    trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
 
-    return render(request, 'front/contact.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2})
+    return render(request, 'front/contact.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2, 'trending':trending})
 ##--#--## Contact Page (contact) Function For Front (User Interface - Frontend) End ##--#--##    

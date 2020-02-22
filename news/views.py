@@ -5,6 +5,7 @@ from django.core.files.storage import FileSystemStorage  # for upload image
 import datetime  # for date and time
 from subcat.models import SubCat
 from cat.models import Cat   # To count news
+from trending.models import Trending  ### Trending app's model
 
 # Create your views here. 
 
@@ -24,6 +25,8 @@ def news_detail(request,word):
 
     popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
 
+    trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
+
     tagname = News.objects.get(name=word).tag    ### For tags
     tag = tagname.split(',')   ## It will divide your tags by comma(,). Can also by space or dot or what i want
 
@@ -39,7 +42,7 @@ def news_detail(request,word):
         print("Can't Add Show")
     ### Count the total view end ###
     
-    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag})
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending})
 ###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 

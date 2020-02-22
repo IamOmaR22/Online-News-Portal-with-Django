@@ -11,6 +11,11 @@ from django.core.files.storage import FileSystemStorage  # for upload image
 ###---#---### Trending Add Function For Back (Admin Panel - Backend) Start ####--#--####
 def trending_add(request):
 
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')
+    # Login check End
+
     if request.method == 'POST':
 
         txt = request.POST.get('txt')
@@ -22,5 +27,9 @@ def trending_add(request):
         b = Trending(txt=txt)
         b.save()
 
-    return render(request, 'back/trending.html')
+    #-# Trending List for Admin Panel Start #-#
+    trendinglist = Trending.objects.all()
+    #-# Trending List for Admin Panel Start #-#
+
+    return render(request, 'back/trending.html', {'trendinglist':trendinglist})
 ###---#---### Trending Add Function For Back (Admin Panel - Backend) End ####--#--####

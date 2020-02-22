@@ -64,6 +64,49 @@
 </div>
 <!-- Add Trending End -->
 
+
+
+<!-- Trending List Start -->
+<!-- Datatables Content Start-->
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Trending</strong> List</h2>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Text</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for cc in trendinglist %}
+                <tr>
+                    <td class="text-center">{{ cc.pk }}</td>
+                    <td>{{ cc.txt }}</td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
+                            <a href="" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+           
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Datatables Content End -->
+<!-- Trending List Start -->
+
+
 {% endblock %}
 
 

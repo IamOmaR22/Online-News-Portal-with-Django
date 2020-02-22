@@ -33,8 +33,10 @@
 	
 <!-- Header Section Start -->
 	<header>
-		<!-- Header desktop -->
+	<!-- Header desktop -->
 		<div class="container-menu-desktop">
+
+		<!-- Top Bar Start -->
 			<div class="topbar">
 				<div class="content-topbar h-100 p-rl-30">
 					<div class="align-self-stretch size-w-0 pos-relative m-r-30">
@@ -99,10 +101,10 @@
 					</div>	
 				</div>
 			</div>
-
+		<!-- Top Bar End -->
 		
 			
-		<!-- Start -->
+		<!-- Start (Top Logo) -->
 			<div class="wrap-logo no-banner container">
 			<!-- Logo desktop(Logo in Top Section) Start -->		
 				<div class="logo">
@@ -110,12 +112,13 @@
 				</div>
 			<!-- Logo desktop(Logo in Top Section) End -->
 			</div>
-		<!-- End -->		
+		<!-- End (Top Logo) -->	
+			
 			
 		<!-- Start -->
 			<div class="wrap-main-nav">
 				<div class="main-nav">
-				<!-- Menu desktop Start -->
+				<!-- Menu desktop (Menu nav bar) Start -->
 					<nav class="menu-desktop">
 						<a class="logo-stick" href="/">
 							<img src="{{ site.picurl }}" alt="LOGO">
@@ -131,8 +134,9 @@
 							{% if gg.count != 0 %} <!--if the category has no news then the category will not be shown-->
 							<li class="mega-menu-item">
 								<a href="category-01.html">{{ gg.name }}</a>
-
+								
 								<div class="sub-mega-menu">
+								<!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) Start -->
 									<div class="nav flex-column nav-pills" role="tablist">
 										<a class="nav-link active" data-toggle="pill" href="#news-0" role="tab">All</a>
 
@@ -143,7 +147,9 @@
 										{% endfor %}
 										
 									</div>
+								<!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) End -->
 
+							<!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) Start -->
 									<div class="tab-content">
 										<div class="tab-pane show active" id="news-0" role="tabpanel">
 											<div class="row">
@@ -233,8 +239,8 @@
 										</div>
 										{% endfor %}
 
-
 									</div>
+							<!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) End -->
 								</div>
 							</li>
 							{% endif %}
@@ -242,7 +248,7 @@
 
 						</ul>
 					</nav>
-				<!-- Menu desktop End -->	
+				<!-- Menu desktop (Menu nav bar) End -->	
 				</div>
 			</div>	
 		<!-- End -->	

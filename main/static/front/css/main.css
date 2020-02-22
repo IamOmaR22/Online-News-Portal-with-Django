@@ -1,46 +1,4 @@
-/*------------------------------------------------------------------
-Project:  MagNews
-Version:  
-Last change:  
-Assigned to:  Le Xuan Bach
-Primary use:  Company
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[LAYOUT]
 
-* body
-  + Header / header
-  + Page Content / .page-content .name-page
-        + Section Layouts / section .name-section
-        ...
-  + Footer / footer
-
--------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[COLOR CODES]
-
-# Text Color      :  
-# Primary Color 01:  
-# Primary Color 02:   
-# Primary Color 03:  
-
-------------------------------------------------------------------*/
-/*------------------------------------------------------------------
-[TYPOGRAPHY]
-
-Body            : 16px/1.6 '', Arial, sans-serif;
-Title           : 18px/1.6 '', Arial, sans-serif;
-Paragrap        : 18px/1.6 '', Arial, sans-serif;
-Input, textarea : 14px/1.6 '', Arial, sans-serif;
--------------------------------------------------------------------*/
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-/*------------------------------------------------------------------
-[ 1 ]*/
 @font-face {
   font-family: Roboto-Regular;
   src: url('../fonts/Roboto/Roboto-Regular.ttf'); 
@@ -61,25 +19,17 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   src: url('../fonts/Roboto/Roboto-Black.ttf'); 
 }
 
-/*------------------------------------------------------------------
-[ 2 ]*/
+
 @font-face {
   font-family: Lato-Regular;
   src: url('../fonts/Lato/Lato-Regular.ttf'); 
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ RS PLUGIN ]*/
 
-/*------------------------------------------------------------------
-[ Bootstrap ]*/
 .container {max-width: 1080px;}
 
 
-
-/*//////////////////////////////////////////////////////////////////
-[ LOADDING ]*/
 .animsition-loading-1 {
   position: absolute;
   top: 50%;
@@ -113,8 +63,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ BUTTON BACK TO TOP ]*/
 .btn-back-to-top {
   display: -webkit-box;
   display: -webkit-flex;
@@ -158,14 +106,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .show-btn-back-to-top {bottom: 0;}
 
 
-/*//////////////////////////////////////////////////////////////////
-[ Header ]*/
 
-/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-[ Header Desktop ]*/
-
-/*==================================================================
-[ Top-bar ]*/
 .topbar {
   background-color: #111;
 }
@@ -181,7 +122,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   align-items: center;
 }
 
-/*---------------------------------------------*/
+
 .left-topbar {
   display: -webkit-box;
   display: -webkit-flex;
@@ -267,8 +208,6 @@ a.left-topbar-item:hover {
 
 
 
-/*==================================================================
-[ Logo ]*/
 .wrap-logo {
   display: -webkit-box;
   display: -webkit-flex;
@@ -282,7 +221,7 @@ a.left-topbar-item:hover {
   padding-bottom: 10px;
 }
 
-/*---------------------------------------------*/
+
 .logo {
   width: 25%;
   height: 100%;
@@ -300,7 +239,7 @@ a.left-topbar-item:hover {
   max-height: 50%;
 }
 
-/*---------------------------------------------*/
+
 .banner-header {
   width: 70%;
   height: 100%;
@@ -318,7 +257,7 @@ a.left-topbar-item:hover {
   max-height: 100%;
 }
 
-/*---------------------------------------------*/
+
 .wrap-logo.no-banner {
   justify-content: center;
 }
@@ -330,7 +269,7 @@ a.left-topbar-item:hover {
   align-items: center;
 }
 
-/*---------------------------------------------*/
+
 .logo-stick {
   display: none;
   line-height: 0;
@@ -343,8 +282,7 @@ a.left-topbar-item:hover {
 }
 
 
-/*==================================================================
-[ Main nav ]*/
+
 .wrap-main-nav {
   width: 100%;
   height: 55px;
@@ -480,7 +418,7 @@ li.main-menu-active > a::before {
   }
 }
 
-/*---------------------------------------------*/
+
 .sub-menu {
   list-style-type: none;
   position: absolute;
@@ -555,7 +493,6 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 }
 
 
-/*---------------------------------------------*/
 .main-menu > li:hover > a:after {
   color: #17b978;
 }
@@ -585,8 +522,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   text-decoration: none;
 }
 
-/*------------------------------------------------------------------
-[ Mega menu ]*/
+
 .main-menu > li.mega-menu-item {
   position: static;
 }
@@ -626,7 +562,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   width: calc(100% - 240px);
 }
 
-/*---------------------------------------------*/
+
 .sub-mega-menu .nav-pills .nav-link {
   font-family: Roboto-Medium;
   font-size: 14px;
@@ -642,15 +578,14 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   background-color: #17b978;
 }
 
-/*---------------------------------------------*/
+
 .sub-mega-menu .tab-content .tab-pane {
   padding: 25px 50px 35px 30px;
 }
 
 
 
-/*==================================================================
-[ Fixed menu desktop ]*/
+
 .fix-menu-desktop .main-nav {
   position: fixed;
   top: -55px;
@@ -684,8 +619,6 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 }
 
 
-/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-[ Header Mobile ]*/
 .wrap-header-mobile {
   display: -webkit-box;
   display: -webkit-flex;
@@ -706,8 +639,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   z-index: 100;
 }
 
-/*------------------------------------------------------------------
-[ Logo mobile ]*/
+
 .logo-mobile {
   display: block;
   position: relative;
@@ -727,8 +659,8 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   margin: auto;
 }
 
-/*------------------------------------------------------------------
-[ btn show menu ]*/
+
+/*btn show menu*/
 .hamburger {
   display: -webkit-box;
   display: -webkit-flex;
@@ -751,8 +683,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 }
 
 
-/*==================================================================
-[ Menu mobile ]*/
+
 .menu-mobile {
   width: 100%;
   background-color: #fff;
@@ -821,7 +752,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   transform: rotate(90deg);
 }
 
-/*---------------------------------------------*/
+
 .sub-menu-m {
   background-color: #fff;
   padding: 10px 50px 15px 20px;
@@ -842,7 +773,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 
 
 
-/*---------------------------------------------*/
+
 @media (max-width: 991px){
   .wrap-header-mobile {
     display: -webkit-box;
@@ -874,8 +805,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ Tab01 ]*/
+
 .tab01 .nav-tabs {
   display: -webkit-box;
   display: -webkit-flex;
@@ -944,7 +874,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
 }
 
 
-/*---------------------------------------------*/
+
 .tab01-link {
   padding-left: 10px;
   white-space: nowrap;
@@ -954,7 +884,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   padding-right: 25px;
 }
 
-/*---------------------------------------------*/
+
 .tab01 .nav-link.dropdown-toggle::after {
   display: none;
 }

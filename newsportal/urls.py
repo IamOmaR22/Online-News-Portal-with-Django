@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'', include('cat.urls')),          # here cat is an app name
     url(r'', include('subcat.urls')),       # here subcat is an app name
     url(r'', include('contactform.urls')),       # here contactform is an app name
+    url(r'', include('trending.urls')),       # here trending is an app name
 ]
 
 if settings.DEBUG:

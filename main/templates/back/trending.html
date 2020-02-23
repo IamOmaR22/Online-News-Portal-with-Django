@@ -91,8 +91,8 @@
                     <td>{{ cc.txt }}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
-                            <a href="" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                            <a href="{% url 'trending_edit' pk=cc.pk %}" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
+                            <a href="{% url 'trending_del' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
                         </div>
                     </td>
                 </tr>

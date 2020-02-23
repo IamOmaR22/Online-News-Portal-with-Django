@@ -6,6 +6,8 @@ from subcat.models import SubCat  ## for SubMenu in the menu bar
 from django.contrib.auth import authenticate, login, logout  # for authentication
 from django.core.files.storage import FileSystemStorage  # for upload image
 from trending.models import Trending  ### Trending app's model
+import random                   ## Random Object (For Trending now)
+from random import randint      ## Random Object (For Trending now)
 
 # Create your views here.
 
@@ -29,6 +31,8 @@ def home(request):
 
     trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
 
+    random_object = Trending.objects.all()[randint(0, len(trending) -1)] ## Random Object (For Trending now). I just used it for home page. To show the trending randomly
+    # print(random_object)
     return render(request, 'front/home.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews':popnews, 'popnews2':popnews2, 'trending':trending})
 ##--#--## Home Page(home) Function For Front (User Interface - Frontend) End ##--#--##
 

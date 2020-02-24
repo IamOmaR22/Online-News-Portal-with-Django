@@ -16,14 +16,14 @@
 <div class="content-header">
     <div class="header-section">
         <h1>
-            <i class="fa fa-table"></i>Edit Trending<br><small>You can add, edit and delete your data!</small>
+            <i class="fa fa-table"></i>Change Pass<br><small>You can add, edit and delete your data!</small>
         </h1>
     </div>
 </div>
 <!-- Breadcrumb Start -->
 <ul class="breadcrumb breadcrumb-top">
-    <li>Trending</li>
-    <li><a href="/panel/trending/edit/{{ pk }}">Edit</a></li>
+    <li>Change</li>
+    <li><a href="/panel/change/pass/">Pass</a></li>
 </ul>
 <!-- Breadcrumb End -->
 <!-- END Datatables Header -->
@@ -36,18 +36,25 @@
             <!-- Basic Form Elements Title -->
             <div class="block-title">
                 
-                <h2><strong>Edit</strong> Trending</h2>
+                <h2><strong>Change</strong> Pass</h2>
             </div>
             <!-- END Form Elements Title -->
 
         <!-- Basic Form Elements Content Start -->
-            <form action="{% url 'trending_edit' pk=pk %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="col-md-6">
-                        <input type="text" id="txt" name="txt" value="{{ mytxt }}" class="form-control" placeholder="Trending"> <!-- value="{{ txt }}", it will show the trending in edit area -->
+                        <input type="text" id="oldpass" name="oldpass" class="form-control" placeholder="Old Pass">
                     </div>
 
+                    <div class="col-md-6">
+                        <input type="text" id="newpass" name="newpass" class="form-control" placeholder="New Pass">
+                   </div>
+
+                </div>        
+                <div class="form-group">
+   
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
                     </div>

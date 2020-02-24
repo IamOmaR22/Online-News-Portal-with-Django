@@ -227,3 +227,15 @@ def contact(request):
 
     return render(request, 'front/contact.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'popnews2':popnews2, 'trending':trending})
 ##--#--## Contact Page (contact) Function For Front (User Interface - Frontend) End ##--#--##    
+
+
+##--#--## Password Change (change from admin panel) Start ##--#--##
+def change_pass(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    return render(request, 'back/change_pass.html')
+##--#--## Password Change (change from admin panel) End ##--#--##

@@ -3,13 +3,6 @@
 
 {% load static %}
 
-<!-- Add Editor(CKEditor) for News Add Page Start -->
-{% block headblock %}
-
-    <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
-
-{% endblock %}
-<!-- Add Editor(CKEditor) for News Add Page Start -->
 
 {% block mainblock %}
 <!-- Datatables Header -->
@@ -41,18 +34,19 @@
             <!-- END Form Elements Title -->
 
         <!-- Basic Form Elements Content Start -->
-            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+            <form action="{% url 'change_pass' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="col-md-6">
-                        <input type="text" id="oldpass" name="oldpass" class="form-control" placeholder="Old Pass">
+                        <input type="password" id="oldpass" name="oldpass" class="form-control" placeholder="Old Pass">
                     </div>
 
                     <div class="col-md-6">
-                        <input type="text" id="newpass" name="newpass" class="form-control" placeholder="New Pass">
+                        <input type="password" id="newpass" name="newpass" class="form-control" placeholder="New Pass">
                    </div>
 
                 </div>        
+                
                 <div class="form-group">
    
                     <div class="col-md-6">

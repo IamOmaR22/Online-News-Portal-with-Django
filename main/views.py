@@ -8,6 +8,7 @@ from django.core.files.storage import FileSystemStorage  # for upload image
 from trending.models import Trending  ### Trending app's model
 import random                   ## Random Object (For Trending now)
 from random import randint      ## Random Object (For Trending now)
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -236,6 +237,52 @@ def change_pass(request):
     if not request.user.is_authenticated:
         return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
     # Login check End
+
+    if request.method == 'POST' :
+              
+        oldpass = request.POST.get('oldpass')
+        newpass = request.POST.get('newpass')
+
+        if oldpass == "" or newpass == "" :
+            error = "All Fields Required"
+            return render(request, 'back/error.html', {'error':error})
+
+        user = authenticate(username=request.user, password=oldpass)
+        if user != None:
+
+            if len(newpass) < 8 :
+                error = "Your Password Must Be At Least 8 Characters"
+                return render(request, 'back/error.html', {'error':error})
+
+        #-# Check Password is Weak or Strong (by using count) #-#
+            count1 = 0
+            count2 = 0
+            count3 = 0
+            count4 = 0
+            for i in newpass :
+                ## I defined here 4 counts
+                ## if any user enter 10 char, count will change from 1 to 1 and it won't increase
+                ## If my count 1 2 3 and 4 were all 1 then my password is a strong password
+                if i > "0" and i < "9" :
+                    count1 = 1              ## one number, count will change from 0 to 1
+                if i > "A" and i < "Z" :
+                    count2 = 1              ## one cap letter, count will change from 0 to 1
+                if i > "a" and i < "z" :
+                    count3 = 1              ## one small letter, count will change from 0 to 1
+                if i > "!" and i < "(" :
+                    count4 = 1              ## one sign, count will change from 0 to 1
+                ## if enter number,cap,small,sign(count 1 1 1 1). if enter number,small(count 1 0 1 0) ## 
+            
+            if count1 == 1 and count2 == 1 and count3 == 1 and count4 == 1 : # That means password is strong 
+                
+                user = User.objects.get(username=request.user)
+                user.set_password(newpass)
+                user.save()
+                return redirect('mylogout')
+        
+        else:
+            error = "Your Password Is Not Correct"
+            return render(request, 'back/error.html', {'error':error})
 
     return render(request, 'back/change_pass.html')
 ##--#--## Password Change (change from admin panel) End ##--#--##

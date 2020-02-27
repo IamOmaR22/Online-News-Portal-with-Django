@@ -149,7 +149,8 @@
                             <!-- END Reminder Form -->
 
                             <!-- Register Form -->
-                            <form action="login_alt.html#register" method="post" id="form-register" class="form-horizontal display-none">
+                            <form action="{% url 'myregister' %}" method="post" id="form-register" class="form-horizontal display-none">
+                                {% csrf_token %}
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <div class="input-group">

@@ -94,7 +94,47 @@ def mylogin(request):
 ##--#--## Registration (myregister) Function For Front (User Interface - Frontend) Start ##--#--##
 def myregister(request):
 
-    
+    if request.method == 'POST':
+        
+        uname = request.POST.get('uname')
+        email = request.POST.get('email')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if password1 != password2 :
+            msg = "Your Password Didn't Match"
+            return render(request, 'front/msgbox.html', {'msg':msg})
+
+    #-# Check Password is Weak or Strong (by using count) Start #-#
+        count1 = 0
+        count2 = 0
+        count3 = 0
+        count4 = 0
+        for i in password1 :
+            ## I defined here 4 counts
+            ## if any user enter 10 char, count will change from 1 to 1 and it won't increase
+            ## If my count 1 2 3 and 4 were all 1 then my password is a strong password
+            if i > "0" and i < "9" :
+                count1 = 1              ## one number, count will change from 0 to 1
+            if i > "A" and i < "Z" :
+                count2 = 1              ## one cap letter, count will change from 0 to 1
+            if i > "a" and i < "z" :
+                count3 = 1              ## one small letter, count will change from 0 to 1
+            if i > "!" and i < "(" :
+                count4 = 1              ## one sign, count will change from 0 to 1
+            ## if enter number,cap,small,sign(count 1 1 1 1). if enter number,small(count 1 0 1 0) ## 
+        if count1 == 0 or count2 == 0 or count3 == 0 and count4 == 0 :
+            msg = "Your Password Is Not Strong Enough"
+            return render(request, 'front/msgbox.html', {'msg':msg})
+    #-# Check Password is Weak or Strong (by using count) End #-#
+        if len(password1) < 8 :
+            msg = "Your Password Must Be At Least 8 Characters"
+            return render(request, 'front/msgbox.html', {'msg':msg})
+
+        if len(User.objects.filter(username=uname)) == 0 and len(User.objects.filter(email=email)) == 0 :
+
+            user = User.objects.create_user(username=uname, email=email, password=password1)
+
     return render(request, 'front/login.html')
 ##--#--## Registration (myregister) Function For Front (User Interface - Frontend) End ##--#--##
 

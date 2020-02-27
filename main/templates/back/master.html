@@ -109,73 +109,83 @@
                             <li>
                                 <a href="/panel" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
                             </li>
-                                  
-                        <!-- Site Settings Panel(To add all the settings) Start -->
-                                <li class="sidebar-header">
-                                    <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
-                                    <span class="sidebar-header-title">Site Settings</span>
-                                </li>
-                        <!-- Site Settings Panel(To add all the settings) End -->
 
+                                  
+                    <!-- Site Settings Panel(To add all the settings) Start -->
+                            <li class="sidebar-header">
+                                <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
+                                <span class="sidebar-header-title">Site Settings</span>
+                            </li>
+                    <!-- Site Settings Panel(To add all the settings) End -->
                             <!-- Settings (Under Site Settings Panel) Start -->
                                 <li>
                                     <a href="/panel/setting/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Settings</span></a>
                                 </li>
                             <!-- Settings (Under Site Settings Panel) End -->
-
                             <!-- About Settings (Under Site Settings Panel) Start -->
                                 <li>
                                     <a href="/panel/about/setting/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">About Settings</span></a>
                                 </li>
                             <!-- About Settings (Under Site Settings Panel) End -->
-
                             <!-- Contact Forms (Under Site Settings Panel) Start -->
                                 <li>
                                     <a href="/panel/contactform/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Contact Forms</span></a>
                                 </li>
                             <!-- Contact Forms (Under Site Settings Panel) End -->
+
+
+                <!-- Manager Panel(To control the managers) Start -->
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
+                        <span class="sidebar-header-title">Manager</span>
+                    </li>
+                <!-- Manager Panel(To control the managers) End -->
+                    <!-- Manager List Forms (Under Manager Panel) Start -->
+                        <li>
+                            <a href="/panel/manager/list/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Manager List</span></a>
+                        </li>
+                    <!-- Manager List Forms (Under Manager Panel) End -->
+
                             
-                        <!-- News Section (Under Site Settings Panel) Start -->
-                                <li class="sidebar-header">
-                                    <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
-                                    <span class="sidebar-header-title">News Section</span>
-                                </li>
-                        <!-- News Section (Under Site Settings Panel) End -->
+                <!-- News Section (Under Site Settings Panel) Start -->
+                        <li class="sidebar-header">
+                            <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
+                            <span class="sidebar-header-title">News Section</span>
+                        </li>
+                <!-- News Section (Under Site Settings Panel) End -->
 
-                            <!-- Category(add and list) Start -->
+                    <!-- Category(add and list) Start -->
+                        <li>
+                            <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
+                            <ul>
                                 <li>
-                                    <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="/panel/category/add">Add Category</a>  <!-- this link provided from urls.py -->
-                                        </li>
+                                    <a href="/panel/category/add">Add Category</a>  <!-- this link provided from urls.py -->
+                                </li>
 
-                                        <li>
-                                            <a href="/panel/category/list">Categories List</a>   <!-- this link provided from urls.py -->
-                                        </li>
+                                <li>
+                                    <a href="/panel/category/list">Categories List</a>   <!-- this link provided from urls.py -->
+                                </li>
                                     
-                                    </ul>
-                                </li>
-                            <!-- Category(add and list) End -->
+                            </ul>
+                        </li>
+                    <!-- Category(add and list) End -->
 
+                    <!-- Sub-Category(add and list) Start -->
+                        <li>
+                            <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">SubCategory</span></a>
+                            <ul>
 
-                            <!-- Sub-Category(add and list) Start -->
                                 <li>
-                                    <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">SubCategory</span></a>
-                                    <ul>
-
-                                        <li>
-                                            <a href="/panel/subcategory/add">Add SubCategory</a>  <!-- this link provided from urls.py -->
-                                        </li>
-
-                                        <li>
-                                            <a href="/panel/subcategory/list">SubCategories List</a>  <!-- this link provided from urls.py -->
-                                        </li>
-
-                                    </ul>
+                                    <a href="/panel/subcategory/add">Add SubCategory</a>  <!-- this link provided from urls.py -->
                                 </li>
-                            <!-- Sub-Category(add and list) End -->
 
+                                <li>
+                                    <a href="/panel/subcategory/list">SubCategories List</a>  <!-- this link provided from urls.py -->
+                                </li>
+
+                            </ul>
+                        </li>
+                    <!-- Sub-Category(add and list) End -->
 
                             <!-- News(add and list) Start -->
                                 <li>

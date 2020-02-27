@@ -14,6 +14,21 @@ from django.contrib.auth.models import User
 
 ##--#--## Manager List Page(Manager) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_list(request):
+
+    manager = Manager.objects.all()
     
-    return render(request, 'back/manager_list.html', {})
+    return render(request, 'back/manager_list.html', {'manager':manager})
 ##--#--## Manager List Page(Manager) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Delete Manager List Page(Manager) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_del(request, pk):
+
+    manager = Manager.objects.get(pk=pk)  
+    b = User.objects.filter(username=manager.utxt)   ## utxt is the username model field
+    b.delete()
+
+    manager.delete()
+
+    return redirect('manager_list')
+##--#--## Delete Manager List Page(Manager) Function For Back (Admin Panel - Backend) End ##--#--##

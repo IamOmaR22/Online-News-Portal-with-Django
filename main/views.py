@@ -90,6 +90,15 @@ def mylogin(request):
     return render(request, 'front/login.html')
 ##--#--## LogIn (mylogin) Function For Front (User Interface - Frontend) End ##--#--##
 
+
+##--#--## Registration (myregister) Function For Front (User Interface - Frontend) Start ##--#--##
+def myregister(request):
+
+    
+    return render(request, 'front/login.html')
+##--#--## Registration (myregister) Function For Front (User Interface - Frontend) End ##--#--##
+
+
 ##--#--## Log Out Start ##--#--##
 def mylogout(request):
 

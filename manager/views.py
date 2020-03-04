@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage  # for upload image
 from trending.models import Trending  ### Trending app's model
 import random                   ## Random Object (For Trending now)
 from random import randint      ## Random Object (For Trending now)
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group, Permission ## For User Group Permission
 
 # Create your views here.
 
@@ -32,3 +32,40 @@ def manager_del(request, pk):
 
     return redirect('manager_list')
 ##--#--## Delete Manager List Page(Manager) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_group(request):
+
+    group = Group.objects.all()
+    
+    return render(request, 'back/manager_group.html', {'group':group})
+##--#--## Manager Group (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Add Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_group_add(request):
+
+    if request.method == 'POST':
+
+        name = request.POST.get('name')
+
+        if name != "":
+
+            if len(Group.objects.filter(name=name)) == 0: ## It won't take same name and avoid bugs
+
+                group = Group(name=name)  ## Group is the model of my group and group is the variable name.
+                group.save()
+    
+    return redirect('manager_group')
+##--#--## Add Manager Group (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Delete Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_group_del(request, name): ## i used name instead of pk
+
+    b = Group.objects.filter(name=name)
+    b.delete()
+    
+    return redirect('manager_group')
+##--#--## Delete Manager Group (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##

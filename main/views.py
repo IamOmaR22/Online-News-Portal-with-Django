@@ -165,6 +165,16 @@ def site_setting(request):
         return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
     # Login check End
 
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
     if request.method == 'POST':
         ## Values saved start
         name = request.POST.get('name')
@@ -253,6 +263,16 @@ def about_setting(request):
     if not request.user.is_authenticated:
         return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
     # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
 
     if request.method == 'POST':
         txt = request.POST.get('txt')

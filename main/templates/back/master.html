@@ -111,7 +111,9 @@
                                 <a href="/panel" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
                             </li>
 
-                                  
+            <!-- Master User(Which sections i don't want to show for other users) Hide Start -->
+                {% if request.user|has_group:"masteruser" %}
+
                     <!-- Site Settings Panel(To add all the settings) Start -->
                             <li class="sidebar-header">
                                 <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
@@ -134,8 +136,7 @@
                                 </li>
                             <!-- Contact Forms (Under Site Settings Panel) End -->
 
-        <!-- Master User(Group) Hide Start -->
-                {% if request.user|has_group:"masteruser" %}
+        
             <!-- Permissions Panel(To control the user permissions) Start -->
                 <li class="sidebar-header">
                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
@@ -147,8 +148,7 @@
                         <a href="/panel/manager/group/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Group</span></a>
                     </li>
                 <!-- Group Forms (Under Permissions Panel) End -->
-                {% endif %}
-        <!-- Master User(Group) Hide End -->
+
 
                 <!-- Manager Panel(To control the managers) Start -->
                     <li class="sidebar-header">
@@ -162,6 +162,9 @@
                         </li>
                     <!-- Manager List Forms (Under Manager Panel) End -->
 
+                {% endif %}
+            <!-- Master User(Which sections i don't want to show for other users) Hide End -->
+            
                             
                 <!-- News Section (Under Site Settings Panel) Start -->
                         <li class="sidebar-header">
@@ -169,6 +172,11 @@
                             <span class="sidebar-header-title">News Section</span>
                         </li>
                 <!-- News Section (Under Site Settings Panel) End -->
+
+
+
+            <!-- Master User(Which sections i don't want to show for other users) Hide Start -->
+                {% if request.user|has_group:"masteruser" %}
 
                     <!-- Category(add and list) Start -->
                         <li>
@@ -203,6 +211,11 @@
                         </li>
                     <!-- Sub-Category(add and list) End -->
 
+                {% endif %}
+            <!-- Master User(Which sections i don't want to show for other users) Hide End -->
+
+
+
                             <!-- News(add and list) Start -->
                                 <li>
                                     <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">News</span></a>
@@ -220,12 +233,19 @@
                                 </li>
                             <!-- News(add and list) End -->
 
+
+
+            <!-- Master User(Which sections i don't want to show for other users) Hide Start -->
+                {% if request.user|has_group:"masteruser" %}
                         <!-- Trending (Under News Section Panel) Start -->
                             <li>
                                 <a href="/panel/trending/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Trending</span></a>
                             </li>
                         <!-- Trending (Under News Section Panel) End -->
+                {% endif %}
+            <!-- Master User(Which sections i don't want to show for other users) Hide End -->
 
+            
                             </ul>
                     <!-- Sidebar Navigation(To add category, sub category, settings etc) End -->
 

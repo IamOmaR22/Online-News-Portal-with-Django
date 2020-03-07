@@ -15,6 +15,21 @@ from django.contrib.auth.models import User, Group, Permission ## For User Group
 ##--#--## Manager List Page(Manager) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_list(request):
 
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
     manager = Manager.objects.all()
     
     return render(request, 'back/manager_list.html', {'manager':manager})
@@ -23,6 +38,21 @@ def manager_list(request):
 
 ##--#--## Delete Manager List Page(Manager) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_del(request, pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
 
     manager = Manager.objects.get(pk=pk)  
     b = User.objects.filter(username=manager.utxt)   ## utxt is the username model field
@@ -36,6 +66,11 @@ def manager_del(request, pk):
 
 ##--#--## Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
 
     #-# Masteruser Access Start #-#
     perm = 0
@@ -55,6 +90,11 @@ def manager_group(request):
 
 ##--#--## Add Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group_add(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
 
     #-# Masteruser Access Start #-#
     perm = 0
@@ -84,6 +124,11 @@ def manager_group_add(request):
 ##--#--## Delete Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group_del(request, name): ## i used name instead of pk
 
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
     #-# Masteruser Access Start #-#
     perm = 0
     for i in request.user.groups.all() :
@@ -104,6 +149,21 @@ def manager_group_del(request, name): ## i used name instead of pk
 ##--#--## Users Groups (To show users) Function For Back (Admin Panel - Backend) Start ##--#--##
 def users_groups(request, pk):
 
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
     manager = Manager.objects.get(pk=pk)
 
     user = User.objects.get(username=manager.utxt)
@@ -121,6 +181,21 @@ def users_groups(request, pk):
 ##--#--## Add Users To Groups (To add users to the groups) Function For Back (Admin Panel - Backend) Start ##--#--##
 def add_users_to_groups(request, pk):
 
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
     if request.method == 'POST':
 
         gname = request.POST.get('gname')
@@ -136,6 +211,21 @@ def add_users_to_groups(request, pk):
 
 ##--#--## Delete Users From Groups (To delete users from the groups) Function For Back (Admin Panel - Backend) Start ##--#--##
 def del_users_to_groups(request, pk, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
 
     group = Group.objects.get(name=name)
     manager = Manager.objects.get(pk=pk)

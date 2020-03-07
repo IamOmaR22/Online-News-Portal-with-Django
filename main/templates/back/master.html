@@ -1,5 +1,6 @@
 {% load static %}
 
+{% load extra_auth %}
 
 {% if user.is_authenticated %}  <!-- Lock admin page Start -->
 
@@ -133,8 +134,9 @@
                                 </li>
                             <!-- Contact Forms (Under Site Settings Panel) End -->
 
-
-                <!-- Permissions Panel(To control the user permissions) Start -->
+        <!-- Master User(Group) Hide Start -->
+                {% if request.user|has_group:"masteruser" %}
+            <!-- Permissions Panel(To control the user permissions) Start -->
                 <li class="sidebar-header">
                     <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
                     <span class="sidebar-header-title">Permissions</span>
@@ -145,9 +147,8 @@
                         <a href="/panel/manager/group/" class=""><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Group</span></a>
                     </li>
                 <!-- Group Forms (Under Permissions Panel) End -->
-
-
-
+                {% endif %}
+        <!-- Master User(Group) Hide End -->
 
                 <!-- Manager Panel(To control the managers) Start -->
                     <li class="sidebar-header">

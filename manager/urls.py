@@ -8,5 +8,8 @@ urlpatterns = [
     url(r'^panel/manager/group/$', views.manager_group, name='manager_group'),       ## Manager Group in Admin Panel
     url(r'^panel/manager/group/add/$', views.manager_group_add, name='manager_group_add'),       ## Add Manager Group in Admin Panel
     url(r'^panel/manager/group/del/(?P<name>.*)/$', views.manager_group_del, name='manager_group_del'),       ## Delete Manager Group in Admin Panel
+    url(r'^panel/manager/group/show/(?P<pk>\d+)/$', views.users_groups, name='users_groups'),       ## Users Groups Show in Admin Panel
+    url(r'^panel/manager/addtogroup/(?P<pk>\d+)/$', views.add_users_to_groups, name='add_users_to_groups'),       ## Add Users To Groups in Admin Panel
+    url(r'^panel/manager/delgroup/(?P<pk>\d+)/(?P<name>.*)/$', views.del_users_to_groups, name='del_users_to_groups'),       ## Delete Users from Group in Admin Panel
     
 ]

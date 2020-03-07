@@ -37,7 +37,17 @@ def manager_del(request, pk):
 ##--#--## Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group(request):
 
-    group = Group.objects.all()
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    group = Group.objects.all().exclude(name="masteruser")
     
     return render(request, 'back/manager_group.html', {'group':group})
 ##--#--## Manager Group (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
@@ -45,6 +55,16 @@ def manager_group(request):
 
 ##--#--## Add Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group_add(request):
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
 
     if request.method == 'POST':
 
@@ -64,8 +84,63 @@ def manager_group_add(request):
 ##--#--## Delete Manager Group (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
 def manager_group_del(request, name): ## i used name instead of pk
 
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
     b = Group.objects.filter(name=name)
     b.delete()
     
     return redirect('manager_group')
 ##--#--## Delete Manager Group (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Users Groups (To show users) Function For Back (Admin Panel - Backend) Start ##--#--##
+def users_groups(request, pk):
+
+    manager = Manager.objects.get(pk=pk)
+
+    user = User.objects.get(username=manager.utxt)
+    
+    ugroup = []
+    for i in user.groups.all():
+        ugroup.append(i.name)
+
+    group = Group.objects.all()
+
+    return render(request, 'back/users_groups.html', {'ugroup':ugroup, 'group':group, 'pk':pk})
+##--#--## Users Groups (To show users) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Add Users To Groups (To add users to the groups) Function For Back (Admin Panel - Backend) Start ##--#--##
+def add_users_to_groups(request, pk):
+
+    if request.method == 'POST':
+
+        gname = request.POST.get('gname')
+
+        group = Group.objects.get(name=gname)
+        manager = Manager.objects.get(pk=pk)
+        user = User.objects.get(username=manager.utxt)  ## Django User
+        user.groups.add(group)
+
+    return redirect('users_groups', pk=pk)
+##--#--## Add Users To Groups (To add users to the groups) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Delete Users From Groups (To delete users from the groups) Function For Back (Admin Panel - Backend) Start ##--#--##
+def del_users_to_groups(request, pk, name):
+
+    group = Group.objects.get(name=name)
+    manager = Manager.objects.get(pk=pk)
+    user = User.objects.get(username=manager.utxt)  ## Django User
+    user.groups.remove(group)
+
+    return redirect('users_groups', pk=pk)
+##--#--## Delete Users From Groups (To delete users from the groups) Function For Back (Admin Panel - Backend) End ##--#--##

@@ -9,6 +9,7 @@ from trending.models import Trending  ### Trending app's model
 import random                   ## Random Object (For Trending now)
 from random import randint      ## Random Object (For Trending now)
 from django.contrib.auth.models import User, Group, Permission ## For User Group Permission
+from django.contrib.contenttypes.models import ContentType  ## To add Permissions
 
 # Create your views here.
 
@@ -234,3 +235,81 @@ def del_users_to_groups(request, pk, name):
 
     return redirect('users_groups', pk=pk)
 ##--#--## Delete Users From Groups (To delete users from the groups) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_perms(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    perms = Permission.objects.all()
+    
+    return render(request, 'back/manager_perms.html', {'perms':perms})
+##--#--## Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Manager Permissions Delete (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_perms_del(request, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    perms = Permission.objects.filter(name=name)
+    perms.delete()
+    
+    return redirect('manager_perms')
+##--#--## Manager Permissions Delete (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+##--#--## Add Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) Start ##--#--##
+def manager_perms_add(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    if request.method == 'POST' :
+
+        name = request.POST.get('name')
+        
+        content_type = ContentType.objects.get(app_label='main', model='main')
+        permission = Permission.objects.create(codename='test_perms', name='test', content_type=content_type)
+    
+    return redirect('manager_perms')
+##--#--## Add Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##

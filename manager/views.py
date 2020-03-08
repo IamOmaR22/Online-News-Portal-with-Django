@@ -322,3 +322,100 @@ def manager_perms_add(request):
 
     return redirect('manager_perms')
 ##--#--## Add Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+
+##--#--## Users Permissions (To show users permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def users_perms(request, pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    manager = Manager.objects.get(pk=pk)
+
+    user = User.objects.get(username=manager.utxt)
+
+    permission = Permission.objects.filter(user=user)
+
+    uperms = []
+    for i in permission :
+        uperms.append(i.name)
+
+    perms = Permission.objects.all()
+
+    return render(request, 'back/users_perms.html', {'uperms':uperms, 'pk':pk, 'perms':perms})
+##--#--## Users Permissions (To show users permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+
+##--#--## Delete Users Permissions (To delete users permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def users_perms_del(request, pk, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    manager = Manager.objects.get(pk=pk)
+    user = User.objects.get(username=manager.utxt) ## Based on pk, user is received
+
+    permission = Permission.objects.get(name=name)
+    user.user_permissions.remove(permission)     ## search user and remove
+
+    return redirect('users_perms', pk=pk)
+##--#--## Delete Users Permissions (To delete users permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+
+##--#--## Add Users Permissions (To add users permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def users_perms_add(request, pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    if request.method == 'POST' :
+
+        pname = request.POST.get('pname')
+
+        manager = Manager.objects.get(pk=pk)
+        user = User.objects.get(username=manager.utxt) ## Based on pk, user is received
+
+        permission = Permission.objects.get(name=pname)
+        user.user_permissions.add(permission) 
+
+    return redirect('users_perms', pk=pk)
+##--#--## Add Users Permissions (To add users permissions) Function For Back (Admin Panel - Backend) End ##--#--##

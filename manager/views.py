@@ -441,9 +441,11 @@ def groups_perms(request, name):
     #-# Masteruser Access End #-#
 
     group = Group.objects.get(name=name)
-    perms = group.permissions.all()    
+    perms = group.permissions.all()
 
-    return render(request, 'back/groups_perms.html', {'perms':perms, 'name':name})
+    allperms = Permission.objects.all()    ## to see the groups with values in html
+
+    return render(request, 'back/groups_perms.html', {'perms':perms, 'name':name, 'allperms':allperms})
 ##--#--## Groups Permissions (To show groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##
 
 
@@ -473,7 +475,35 @@ def groups_perms_del(request, gname, name):
     group.permissions.remove(perm)  
 
     return redirect('groups_perms', name=gname)
-##--#--## Delete Permissions (To delete groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+##--#--## Delete Groups Permissions (To delete groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##
 
 
 
+##--#--## Add Groups Permissions (To add groups permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def groups_perms_add(request, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    if request.method == 'POST' :
+
+        pname = request.POST.get('pname')
+        group = Group.objects.get(name=name)
+        perm = Permission.objects.get(name=pname)  
+
+        group.permissions.add(perm)  
+
+    return redirect('groups_perms', name=name)
+##--#--## Add Groups Permissions (To add groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##

@@ -32,11 +32,19 @@
             <!-- END Form Elements Title -->
 
             <!-- Basic Form Elements Content -->
-            <form action="{% url 'manager_group_add' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+            <form action="{% url 'groups_perms_add' name=name %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="col-md-6">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Group Name" required>
+
+                        <select id="pname" name="pname" class="select-chosen" data-placeholder="Choose a Permission..." style="width: 250px;">
+                            <!--  Dynamic groups Start -->
+                            {% for i in allperms %}
+                            <option value="{{ i.name }}">{{ i.name }}</option>
+                            {% endfor %}
+                            <!--  Dynamic groups End -->
+                        </select>
+
                     </div>
 
 

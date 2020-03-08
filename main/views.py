@@ -8,7 +8,7 @@ from django.core.files.storage import FileSystemStorage  # for upload image
 from trending.models import Trending  ### Trending app's model
 import random                   ## Random Object (For Trending now)
 from random import randint      ## Random Object (For Trending now)
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group, Permission
 from manager.models import Manager
 
 # Create your views here.
@@ -66,6 +66,17 @@ def panel(request):
     if not request.user.is_authenticated:
         return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
     # Login check End
+
+    # Permission Check(logged in user can access or not) Start
+    perm = 0
+    perms = Permission.objects.filter(user=request.user) ## Current user, that is logged in now
+    for i in perms :
+        if i.codename == "master_user" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    # Permission Check(logged in user can access or not) End
 
     return render(request, 'back/home.html')
 ##--#--## Panel (Admin Panel) Function For Back (Admin Panel - Backend) End ##--#--##

@@ -107,9 +107,14 @@
 
                     <!-- Sidebar Navigation(To add category, sub category, settings etc) Start -->
                         <ul class="sidebar-nav">
+
+                        <!-- Permission Check(logged in user can access or not) Start -->
+                            {% if perms.main.master_user %}
                             <li>
                                 <a href="/panel" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
                             </li>
+                            {% endif %}
+                        <!-- Permission Check(logged in user can access or not) End -->
 
             <!-- Master User(Which sections i don't want to show for other users) Hide Start -->
                 {% if request.user|has_group:"masteruser" %}

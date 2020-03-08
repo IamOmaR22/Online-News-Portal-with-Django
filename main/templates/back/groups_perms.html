@@ -8,13 +8,13 @@
 <div class="content-header">
     <div class="header-section">
         <h1>
-            <i class="fa fa-table"></i>Groups<br><small>You can add, edit and delete your data!</small>
+            <i class="fa fa-table"></i>Group's Permissions<br><small>You can add, edit and delete your data!</small>
         </h1>
     </div>
 </div>
 <ul class="breadcrumb breadcrumb-top">
     <li>Site</li>
-    <li><a href="/panel/manager/group/">Groups</a></li>
+    <li><a href="/panel/manager/group/">Group's Permissions</a></li>
 </ul>
 <!-- END Datatables Header -->
 
@@ -27,7 +27,7 @@
             <!-- Basic Form Elements Title -->
             <div class="block-title">
                 
-                <h2><strong>Add</strong> Group</h2>
+                <h2><strong>Add</strong> Group's Perms</h2>
             </div>
             <!-- END Form Elements Title -->
 
@@ -60,7 +60,7 @@
 <!-- Datatables Content -->
 <div class="block full">
     <div class="block-title">
-        <h2><strong>Groups</strong> List</h2>
+        <h2><strong>Group's Permissions</strong> List</h2>
     </div>
     
     <div class="table-responsive">
@@ -74,13 +74,12 @@
             <tbody>
 
 
-                {% for cc in group %}
+                {% for cc in perms %}
                 <tr>
                     <td>{{ cc.name }}</td>
                     <td class="text-center">
-                        <div class="btn-group">
-                            <a href="{% url 'groups_perms' name=cc.name %}" data-toggle="tooltip" title="Perms" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Perms</i></a>
-                            <a href="{% url 'manager_group_del' name=cc.name %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                        <div class="btn-group">                        
+                            <a href="{% url 'groups_perms_del' gname=name name=cc.name %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
                         </div>
                     </td>
                 </tr>

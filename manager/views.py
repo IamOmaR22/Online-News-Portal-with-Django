@@ -419,3 +419,61 @@ def users_perms_add(request, pk):
 
     return redirect('users_perms', pk=pk)
 ##--#--## Add Users Permissions (To add users permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+
+##--#--## Groups Permissions (To show groups permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def groups_perms(request, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    group = Group.objects.get(name=name)
+    perms = group.permissions.all()    
+
+    return render(request, 'back/groups_perms.html', {'perms':perms, 'name':name})
+##--#--## Groups Permissions (To show groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+
+
+##--#--## Delete Groups Permissions (To delete groups permissions) Function For Back (Admin Panel - Backend) Start ##--#--##
+def groups_perms_del(request, gname, name):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :
+        error = "Access Denied"
+        return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    group = Group.objects.get(name=gname)
+    perm = Permission.objects.get(name=name)  
+
+    group.permissions.remove(perm)  
+
+    return redirect('groups_perms', name=gname)
+##--#--## Delete Permissions (To delete groups permissions) Function For Back (Admin Panel - Backend) End ##--#--##
+
+
+

@@ -17,5 +17,7 @@ urlpatterns = [
     url(r'^panel/manager/perms/show/(?P<pk>\d+)/$', views.users_perms, name='users_perms'),   ## Users Permissions Show in Admin Panel
     url(r'^panel/manager/delperm/(?P<pk>\d+)/(?P<name>.*)/$', views.users_perms_del, name='users_perms_del'),  ## Delete Users permissions in Admin Panel
     url(r'^panel/manager/addperm/(?P<pk>\d+)/$', views.users_perms_add, name='users_perms_add'),  ## Add Users permissions in Admin Panel
+    url(r'^panel/manager/addpermtogroup/(?P<name>.*)/$', views.groups_perms, name='groups_perms'),   ## Groups Permissions Show in Admin Panel
+    url(r'^panel/manager/group/delperms/(?P<gname>.*)/(?P<name>.*)/$', views.groups_perms_del, name='groups_perms_del'),   ## Delete Groups Permissions in Admin Panel
 
 ]

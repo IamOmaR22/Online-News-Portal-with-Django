@@ -307,9 +307,18 @@ def manager_perms_add(request):
     if request.method == 'POST' :
 
         name = request.POST.get('name')
+        cname = request.POST.get('cname')    
+
+        ## Avoid repeated Start
+        if len(Permission.objects.filter(codename=cname)) == 0 :
         
-        content_type = ContentType.objects.get(app_label='main', model='main')
-        permission = Permission.objects.create(codename='test_perms', name='test', content_type=content_type)
-    
+            content_type = ContentType.objects.get(app_label='main', model='main')
+            permission = Permission.objects.create(codename=cname, name=name, content_type=content_type)
+
+        else:
+            error = "This Codename Used Before"
+            return render(request, 'back/error.html', {'error':error})
+        ## Avoid repeated End
+
     return redirect('manager_perms')
 ##--#--## Add Manager Permissions (For User Permission) Function For Back (Admin Panel - Backend) End ##--#--##

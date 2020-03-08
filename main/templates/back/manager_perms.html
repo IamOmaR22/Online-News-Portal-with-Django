@@ -35,12 +35,16 @@
             <form action="{% url 'manager_perms_add' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 {% csrf_token %}
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input type="text" id="name" name="name" class="form-control" placeholder="Permission Name" required>
                     </div>
 
+                    <div class="col-md-4">
+                        <input type="text" id="cname" name="cname" class="form-control" placeholder="Permission Code Name" required>
+                    </div>
 
-                    <div class="col-md-6">
+
+                    <div class="col-md-4">
                         <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>   </div>
                     </div>
 
@@ -79,7 +83,6 @@
                     <td>{{ cc.name }}</td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
                             <a href="{% url 'manager_perms_del' name=cc.name %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
                         </div>
                     </td>

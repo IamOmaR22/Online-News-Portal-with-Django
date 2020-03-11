@@ -20,16 +20,16 @@ def home(request):
     # return render(request, 'front/home.html', {'sitename':sitename})
     
     site = Main.objects.get(pk=2)
-    news = News.objects.all().order_by('-pk')  ## for reverse(ordering) need to filter by pk with (-) to get the latest submission first.
+    news = News.objects.filter(act=1).order_by('-pk')  ## for reverse(ordering) need to filter by pk with (-) to get the latest submission first.
 
     cat = Cat.objects.all()  ## Show categories in footer
     subcat = SubCat.objects.all()  ## for SubMenu in the menu bar
     
-    lastnews = News.objects.all().order_by('-pk')[:3]   ### This query for last three post
+    lastnews = News.objects.filter(act=1).order_by('-pk')[:3]   ### This query for last three post
 
-    popnews = News.objects.all().order_by('-show')    ### Populer News will be Shown according to view(show)
+    popnews = News.objects.filter(act=1).order_by('-show')    ### Populer News will be Shown according to view(show)
 
-    popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
+    popnews2 = News.objects.filter(act=1).order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show) in footer section
 
     trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
 
@@ -73,9 +73,9 @@ def panel(request):
     for i in perms :
         if i.codename == "master_user" : perm = 1
 
-    if perm == 0 :
-        error = "Access Denied"
-        return render(request, 'back/error.html', {'error':error})
+    # if perm == 0 :
+    #     error = "Access Denied"
+    #     return render(request, 'back/error.html', {'error':error})
     # Permission Check(logged in user can access or not) End
 
     return render(request, 'back/home.html')

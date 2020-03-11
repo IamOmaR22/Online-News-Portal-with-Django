@@ -54,8 +54,17 @@ def news_list(request):
         return redirect('mylogin')
     # Login check End
 
-    news = News.objects.all()
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
 
+    if perm == 0 :
+        news = News.objects.filter(writer=request.user)
+    elif perm == 1:
+        news = News.objects.all()
+    #-# Masteruser Access End #-#
+    
     return render(request, 'back/news_list.html', {'news':news})
 ###-----#-----### News List Function For Back (Admin Panel - Backend) End ###-----#-----###
 
@@ -115,7 +124,7 @@ def news_add(request):
 
                     ocatid = SubCat.objects.get(pk=newsid).catid   # get the total news for count news.
 
-                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer="-", catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag)  # these are the model fields
+                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer=request.user, catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag)  # these are the model fields
                     b.save()
 
                     count = len(News.objects.filter(ocatid=ocatid))     # for count news
@@ -152,6 +161,18 @@ def news_delete(request,pk):
     if not request.user.is_authenticated:
         return redirect('mylogin')
     # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :  ## user is not master
+        a = News.objects.get(pk=pk).writer
+        if str(a) != str(request.user):
+            error = "Access Denied"
+            return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
 
     try:
         b = News.objects.get(pk=pk)  # if we use filter, it won't delete the record from media folder
@@ -191,6 +212,19 @@ def news_edit(request, pk):
         error = "News Not Found"
         return render(request, 'back/error.html', {'error':error})
     #### when the news does not exist(if we type pk value ..../news/edit/14/ this pk) End ####
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :  ## user is not master
+        a = News.objects.get(pk=pk).writer
+        if str(a) != str(request.user): # we can use a instead of str(a).it won't give error
+            error = "Access Denied"
+            return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
 
     news = News.objects.get(pk=pk)
 
@@ -238,8 +272,8 @@ def news_edit(request, pk):
                     b.picurl = url
                     b.catname = newsname
                     b.catid = newsid
-
                     b.tag = tag   ### This query for tag
+                    b.act = 0
 
                     b.save()
                     return redirect('news_list')
@@ -274,3 +308,20 @@ def news_edit(request, pk):
 
     return render(request, 'back/news_edit.html', {'pk':pk, 'news':news, 'cat':cat})   # by using dictionary we send into template
 ###-----#-----### Edit Records Function For Back (Admin Panel - Backend) End ###-----#-----###
+
+
+
+###-----#-----### News Publish Function For Back (Admin Panel - Backend) Start ###-----#-----###
+def news_publish(request,pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')
+    # Login check End
+
+    news = News.objects.get(pk=pk)
+    news.act = 1
+    news.save()
+
+    return redirect('news_list')
+###-----#-----### News Publish Function For Back (Admin Panel - Backend) End ###-----#-----###

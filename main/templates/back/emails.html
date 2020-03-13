@@ -1,0 +1,67 @@
+
+{% extends 'back/master.html' %}
+
+{% load static %}
+
+{% block mainblock %}
+<!-- Datatables Header -->
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="fa fa-table"></i>Emails List<br><small>You can add, edit and delete your data!</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Emails</li>
+    <li><a href="/panel/newsletter/emails">List</a></li>
+</ul>
+<!-- END Datatables Header -->
+
+
+
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Emails</strong> List</h2>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Email</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for cc in emails %}
+                <tr>
+                    <td class="text-center">{{ cc.pk }}</td>
+                    <td>{{ cc.txt }}</td>
+
+                    <td class="text-center">
+                        <div class="btn-group">                           
+                            <a href="{% url 'news_txt_del' pk=cc.pk num=1 %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+           
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END Datatables Content -->
+{% endblock %}
+
+
+{% block footerblock %}
+<!-- Load and execute javascript code used only in this page -->
+<script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
+        {% endblock %}

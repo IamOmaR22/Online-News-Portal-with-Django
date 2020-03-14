@@ -73,16 +73,22 @@ def panel(request):
     perms = Permission.objects.filter(user=request.user) ## Current user, that is logged in now
     for i in perms :
         if i.codename == "master_user" : perm = 1
-    
-    # random string for dashboard Start
+
+    '''
+    # random string algo Start
     test = ['!', '@', '#', '$', '%']
     rand = ""
     for i in range(4): # 4*3 = total 12. 3 means letter,number,special
         rand = rand + random.choice(string.ascii_letters)
         rand += random.choice(test)
         rand += str(random.randint(0, 9))
+    # random string algo End
+    '''
 
-    # random string for dashboard End
+    #-# Random Name Of The News (string for dashboard) Start
+    count = News.objects.count()
+    rand = News.objects.all()[random.randint(0, count-1)]
+    #-# Random Name Of The News (string for dashboard) End
 
     # if perm == 0 :
     #     error = "Access Denied"

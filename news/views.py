@@ -47,6 +47,43 @@ def news_detail(request,word):
 ###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 
+
+###-----#-----### Short URL For News Function For Front (User Interface - Frontend) Start ###-----#-----###
+def news_detail_short(request, pk):
+    
+    site = Main.objects.get(pk=2)
+    news = News.objects.all().order_by('-pk')  ## for reverse(ordering) need to filter by pk with (-) to get the latest submission first.
+
+    cat = Cat.objects.all()  ## Show categories in footer
+    subcat = SubCat.objects.all()  ## for SubMenu in the menu bar
+    lastnews = News.objects.all().order_by('-pk')[:3]   ### This query for last three post
+
+    shownews = News.objects.filter(rand=pk)
+    popnews = News.objects.all().order_by('-show')    ### Populer News Details will be Shown according to view(show)
+
+    popnews2 = News.objects.all().order_by('-show')[:3]    ### 3 Populer News will be Shown according to view(show)
+
+    trending = Trending.objects.all().order_by('-pk')[:3] ### Trending now will show on top bar(send query from here to naster.html in front)
+
+    tagname = News.objects.get(rand=pk).tag    ### For tags
+    tag = tagname.split(',')   ## It will divide your tags by comma(,). Can also by space or dot or what i want
+
+    ### Count the total view start ###
+    try :
+
+        mynews = News.objects.get(rand=pk)
+        mynews.show = mynews.show + 1
+        mynews.save()
+
+    except :
+
+        print("Can't Add Show")
+    ### Count the total view end ###
+    
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending})
+###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
+
+
 ###-----#-----### News List Function For Back (Admin Panel - Backend) Start ###-----#-----###
 def news_list(request):
 
@@ -93,7 +130,7 @@ def news_add(request):
     time = str(now.hour) + ":" + str(now.minute)
     ## Date and Time End ##
 
-    # random number (Instead of PK in ID) start
+    #-# random number of the news (Instead of PK in ID) Start
     date = str(year) + str(month) + str(day)
     randint = str(random.randint(1000, 9999))
     rand = date + randint
@@ -103,7 +140,7 @@ def news_add(request):
         randint = str(random.randint(1000, 9999))
         rand = date + randint
         rand = int(rand)
-    # random number (Instead of PK in ID) end
+    #-# random number of the news (Instead of PK in ID) End
 
     cat = SubCat.objects.all() ### Categories (to grt all the category) ###
 

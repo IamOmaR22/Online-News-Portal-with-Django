@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^panel/news/del/(?P<pk>\d+)/$', views.news_delete, name='news_delete'),   ## Admin Panel Delete News
     url(r'^panel/news/edit/(?P<pk>\d+)/$', views.news_edit, name='news_edit'),    ## Admin Panel Edit News
     url(r'^panel/news/publish/(?P<pk>\d+)/$', views.news_publish, name='news_publish'),   ## Admin Panel Publish News   
+    url(r'^urls/(?P<pk>\d+)/$', views.news_detail_short, name='news_detail_short'),       ## Front News Short Url  
 ]                                                                               
 
 

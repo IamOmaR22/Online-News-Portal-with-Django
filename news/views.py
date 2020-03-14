@@ -6,6 +6,7 @@ import datetime  # for date and time
 from subcat.models import SubCat
 from cat.models import Cat   # To count news
 from trending.models import Trending  ### Trending app's model
+import random
 
 # Create your views here. 
 
@@ -91,7 +92,19 @@ def news_add(request):
     today = str(year) + "/" + str(month) + "/" + str(day)
     time = str(now.hour) + ":" + str(now.minute)
     ## Date and Time End ##
-    
+
+    # random number (Instead of PK in ID) start
+    date = str(year) + str(month) + str(day)
+    randint = str(random.randint(1000, 9999))
+    rand = date + randint
+    rand = int(rand)
+
+    while len(News.objects.filter(rand=rand)) != 0:
+        randint = str(random.randint(1000, 9999))
+        rand = date + randint
+        rand = int(rand)
+    # random number (Instead of PK in ID) end
+
     cat = SubCat.objects.all() ### Categories (to grt all the category) ###
 
 
@@ -124,7 +137,7 @@ def news_add(request):
 
                     ocatid = SubCat.objects.get(pk=newsid).catid   # get the total news for count news.
 
-                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer=request.user, catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag)  # these are the model fields
+                    b = News(name=newstitle, short_txt=newstxtshort, body_txt=newstxt, date=today, picname=filename, picurl=url, writer=request.user, catname=newsname, catid=newsid, show=0, time=time, ocatid=ocatid, tag=tag, rand=rand)  # these are the model fields
                     b.save()
 
                     count = len(News.objects.filter(ocatid=ocatid))     # for count news

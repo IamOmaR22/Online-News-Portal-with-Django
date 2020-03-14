@@ -73,11 +73,15 @@ def panel(request):
     perms = Permission.objects.filter(user=request.user) ## Current user, that is logged in now
     for i in perms :
         if i.codename == "master_user" : perm = 1
-
+    
     # random string for dashboard Start
+    test = ['!', '@', '#', '$', '%']
     rand = ""
-    for i in range(10):
+    for i in range(4): # 4*3 = total 12. 3 means letter,number,special
         rand = rand + random.choice(string.ascii_letters)
+        rand += random.choice(test)
+        rand += str(random.randint(0, 9))
+
     # random string for dashboard End
 
     # if perm == 0 :

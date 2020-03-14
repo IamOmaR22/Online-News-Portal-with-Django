@@ -3,6 +3,8 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block mainblock %}
 
 <!-- Mini Top Stats Row (Index page of admin panel) Start -->
@@ -72,7 +74,7 @@
 <!-- Mini Top Stats Row (Index page of admin panel) End -->
 
 <!-- random string for dashboard Start -->
-{{ rand }}
+{{ rand | intword }}
 <!-- random string for dashboard End -->
 
 {% endblock %}

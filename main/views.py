@@ -10,6 +10,7 @@ import random                   ## Random Object (For Trending now)
 from random import randint      ## Random Object (For Trending now)
 from django.contrib.auth.models import User, Group, Permission
 from manager.models import Manager
+import string
 
 # Create your views here.
 
@@ -73,12 +74,18 @@ def panel(request):
     for i in perms :
         if i.codename == "master_user" : perm = 1
 
+    # random string for dashboard Start
+    rand = ""
+    for i in range(10):
+        rand = rand + random.choice(string.ascii_letters)
+    # random string for dashboard End
+
     # if perm == 0 :
     #     error = "Access Denied"
     #     return render(request, 'back/error.html', {'error':error})
     # Permission Check(logged in user can access or not) End
 
-    return render(request, 'back/home.html')
+    return render(request, 'back/home.html', {'rand':rand})
 ##--#--## Panel (Admin Panel) Function For Back (Admin Panel - Backend) End ##--#--##
 
 

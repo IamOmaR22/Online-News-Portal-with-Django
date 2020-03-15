@@ -3,5 +3,5 @@ from .import views
 
 urlpatterns = [
 
-   # url(r'^panel/change/pass/$', views.change_pass, name='change_pass'),  ## Password Change (By clicking setting button in admin pannel)
+    url(r'^comment/add/news/(?P<pk>\d+)/$', views.news_cm_add, name='news_cm_add'),
 ]

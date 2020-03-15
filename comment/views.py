@@ -13,3 +13,9 @@ from manager.models import Manager
 import string
 
 # Create your views here.
+
+def news_cm_add(request,pk):
+
+    newsname = News.objects.get(pk=pk).name ## redirect to same news after comment
+
+    return redirect('news_detail', word=newsname)

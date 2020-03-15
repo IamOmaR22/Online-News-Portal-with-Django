@@ -42,8 +42,10 @@ def news_detail(request,word):
 
         print("Can't Add Show")
     ### Count the total view end ###
+
+    code = News.objects.get(name=word).pk  ## For Commnet Section
     
-    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending})
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending, 'code':code})
 ###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 

@@ -106,9 +106,10 @@
                         </p>
 
                         {% if user.is_authenticated %} <!-- When the user is logged in -->
+                        
                         <form action="{% url 'news_cm_add' pk=code %}" method="POST"> <!-- code from news_detail function -->
                             {% csrf_token %}
-                            <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
+                            <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..." required></textarea>
                             <button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
                                 Post Comment
                             </button>
@@ -116,6 +117,7 @@
 
                         {% else %}  <!-- When the user is not logged in -->
                         <form>
+                            {% csrf_token %}
                             <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
 
                             <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="name" placeholder="Name*">

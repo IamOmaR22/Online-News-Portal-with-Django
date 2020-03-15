@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'manager',
     'newsletter',
     'django.contrib.humanize',
+    'comment',
 ]
 
 MIDDLEWARE = [

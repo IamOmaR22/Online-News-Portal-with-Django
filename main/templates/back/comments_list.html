@@ -35,6 +35,7 @@
                     <th>Date & Time</th>
                     <th>Email</th>
                     <th>Comment</th>
+                    <th>Status</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -48,10 +49,14 @@
                     <td>{{ cc.date }} | {{ cc.time }}</td>
                     <td>{{ cc.email }}</td>
                     <td>{{ cc.cm }}</td>
-                   
+                    {% if cc.status == 0 %}
+                    <td>Pending</td>
+                    {% elif cc.status == 1 %}
+                    <td>Confirmed</td>
+                    {% endif %}
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="{% url 'news_edit' pk=cc.pk %}" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
+                            <a href="{% url 'comments_confirm' pk=cc.pk %}" data-toggle="tooltip" title="Confirm" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Confirm</i></a>
                             <a href="{% url 'comments_del' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
                             
                         </div>

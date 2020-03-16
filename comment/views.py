@@ -105,3 +105,30 @@ def comments_del(request, pk):
 
     return redirect('comments_list')
 
+
+
+def comments_confirm(request, pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :  ## user is not master
+        a = News.objects.get(pk=pk).writer
+        if str(a) != str(request.user): # we can use a instead of str(a).it won't give error
+            error = "Access Denied"
+            return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    comment = Comment.objects.get(pk=pk)
+    comment.status = 1
+    comment.save()
+
+    return redirect('comments_list')    
+

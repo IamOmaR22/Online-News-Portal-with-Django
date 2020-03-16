@@ -93,6 +93,33 @@
 
 
                     <a href="{% url 'news_detail_short' pk=i.rand %}">/urls/{{ i.rand }}</a>
+                    <br><br><br>
+
+
+                <!-- Comment Show Start -->
+                    <div>
+
+                        {% if cmcount != 0 %}  <!-- If there is comment, then show this section -->
+                        <div class="how2 how2-cl4 flex-s-c m-b-30">
+                            <h3 class="f1-m-2 cl3 tab01-title">
+                                Comments
+                            </h3>
+                        </div>
+                        {% endif %}
+
+                        {% for cm in comment %}
+                        <h4 class="f1-l-4 cl3 p-b-12">
+                            {{ cm.name }} | {{ cm.date }} & {{ cm.time }}
+                        </h4>
+                        <p class="f1-s-13 cl8 p-b-40">
+                            {{ cm.cm }}
+                        </p>
+                        <hr>
+                        {% endfor %}
+
+                    </div>
+                <!-- Comment Show End -->
+
                     <br><br>
 
                 <!-- Leave a comment Start -->
@@ -229,8 +256,8 @@
                     
                         </div>	
                     <!-- Dynamic Tags View in News Details Page End -->
-
                     </div>
+
                 </div>
             </div>
         </div>

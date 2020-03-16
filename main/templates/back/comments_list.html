@@ -1,0 +1,75 @@
+
+{% extends 'back/master.html' %}
+
+{% load static %}
+
+{% block mainblock %}
+<!-- Datatables Header -->
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="fa fa-table"></i>Comment List<br><small>You can add, edit and delete your data!</small>
+        </h1>
+    </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+    <li>Comment</li>
+    <li><a href="/comment/list">List</a></li>
+</ul>
+<!-- END Datatables Header -->
+
+
+
+<!-- Datatables Content -->
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Comment</strong> List</h2>
+    </div>
+    
+    <div class="table-responsive">
+        <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Name</th>
+                    <th>Date & Time</th>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                {% for cc in comment %}
+                <tr>
+                    <td class="text-center">{{ cc.pk }}</td>
+                    <td>{{ cc.name }}</td>
+                    <td>{{ cc.date }} | {{ cc.time }}</td>
+                    <td>{{ cc.email }}</td>
+                    <td>{{ cc.cm }}</td>
+                   
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="{% url 'news_edit' pk=cc.pk %}" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
+                            <a href="{% url 'comments_del' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                            
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+           
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- END Datatables Content -->
+{% endblock %}
+
+
+{% block footerblock %}
+<!-- Load and execute javascript code used only in this page -->
+<script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
+        {% endblock %}

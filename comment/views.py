@@ -42,7 +42,66 @@ def news_cm_add(request,pk):
 
             b = Comment(name=manager.name, email=manager.email, cm=cm, news_id=pk, date=today, time=time) ## name=manager.name means name will take automatically from logged in user(manager)
             b.save()
+
+        else:  # user not logged in
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+
+            b = Comment(name=name, email=email, cm=cm, news_id=pk, date=today, time=time)
+            b.save()
     
     newsname = News.objects.get(pk=pk).name ## redirect to same news after comment
 
     return redirect('news_detail', word=newsname)
+
+
+
+def comments_list(request):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :  ## user is not master
+        a = News.objects.get(pk=pk).writer
+        if str(a) != str(request.user): # we can use a instead of str(a).it won't give error
+            error = "Access Denied"
+            return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    comment = Comment.objects.all()
+
+    return render(request, 'back/comments_list.html', {'comment':comment})
+
+
+
+def comments_del(request, pk):
+
+    # Login check Start
+    if not request.user.is_authenticated:
+        return redirect('mylogin')
+    # Login check End
+
+    #-# Masteruser Access Start #-#
+    perm = 0
+    for i in request.user.groups.all() :
+        if i.name == "masteruser" : perm = 1
+
+    if perm == 0 :  ## user is not master
+        a = News.objects.get(pk=pk).writer
+        if str(a) != str(request.user): # we can use a instead of str(a).it won't give error
+            error = "Access Denied"
+            return render(request, 'back/error.html', {'error':error})
+    #-# Masteruser Access End #-#
+
+    comment = Comment.objects.filter(pk=pk)
+    comment.delete()
+
+    return redirect('comments_list')
+

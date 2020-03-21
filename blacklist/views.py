@@ -17,4 +17,26 @@ import datetime
 
 def black_list(request):
 
-    return render(request, 'back/blacklist.html')
+    ip = BlackList.objects.all()
+
+    return render(request, 'back/blacklist.html', {'ip':ip})
+
+def ip_add(request):
+
+    if request.method == 'POST':
+        ip = request.POST.get('ip')
+
+        if ip != "":
+            b = BlackList(ip=ip)
+            b.save()
+
+    return redirect('black_list')
+
+
+
+def ip_del(request, pk):
+
+    b = BlackList.objects.filter(pk=pk)
+    b.delete()
+
+    return redirect('black_list')

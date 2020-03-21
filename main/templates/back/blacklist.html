@@ -31,11 +31,11 @@
             <!-- END Form Elements Title -->
 
             <!-- Basic Form Elements Content -->
-            <form action="{% url 'cat_add' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+            <form action="{% url 'ip_add' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="col-md-6">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="Ip" required>
+                        <input type="text" id="ip" name="ip" class="form-control" placeholder="Ip" required>
                     </div>
 
 
@@ -74,15 +74,15 @@
             <tbody>
 
 
-                {% for cc in subcat %}
+                {% for cc in ip %}
                 <tr>
                     <td class="text-center">{{ cc.pk }}</td>
                     <td>{{ cc.ip }}</td>
                     
                     <td class="text-center">
                         <div class="btn-group">
-                            <a href="javascript:void(0)" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"> Edit</i></a>
-                            <a href="{% url 'news_delete' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
+                            
+                            <a href="{% url 'ip_del' pk=cc.pk %}" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"> Delete</i></a>
                         </div>
                     </td>
                 </tr>

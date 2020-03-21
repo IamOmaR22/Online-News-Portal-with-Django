@@ -14,3 +14,7 @@ import string
 import datetime
 
 # Create your views here.
+
+def black_list(request):
+
+    return render(request, 'back/blacklist.html')

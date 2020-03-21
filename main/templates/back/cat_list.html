@@ -33,6 +33,24 @@
 <!-- Export or Download CSV File End -->
 
 
+<!-- Import CSV File Start -->
+<div class="block full">
+    <div class="block-title">
+        <h2><strong>Import</strong> Data</h2>
+    </div>
+    
+    <form action="{% url 'import_cat_csv' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="table-responsive">
+            <input type="file" name="csv_file" id="csv_file">
+            <br>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<!-- Import CSV File End -->
+
+
 <!-- Datatables Content -->
 <div class="block full">
     <div class="block-title">

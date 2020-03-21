@@ -61,3 +61,36 @@ def export_cat_csv(request):
 
     return response
 ###--#--### To Download CSV File From Cat End ###--#--###
+
+
+###--#--### To Import CSV File In Cat Start ###--#--###
+def import_cat_csv(request):
+
+    if request.method == 'POST':
+        csv_file = request.FILES['csv_file']
+
+        if not csv_file.name.endswith('.csv'):
+            error = "Please Input CSV File"
+            return render(request, 'back/error.html', {'error':error})
+
+        if csv_file.multiple_chunks():
+            error = "File Is Too Large"
+            return render(request, 'back/error.html', {'error':error})
+
+        file_data = csv_file.read().decode("utf-8")
+
+        lines = file_data.split("\n")
+
+        for line in lines:
+            fields = line.split(",")
+
+            try:
+                if len(Cat.objects.filter(name=fields[0])) == 0 and fields[0] != "Title" and fields[0] != "":
+                    b = Cat(name=fields[0])
+                    b.save()
+
+            except:
+                print("Finish")
+
+    return redirect('cat_list')
+###--#--### To Import CSV File In Cat End ###--#--###

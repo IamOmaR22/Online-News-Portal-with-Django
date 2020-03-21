@@ -5,6 +5,7 @@ urlpatterns = [
 
     url(r'^panel/category/list/$', views.cat_list, name='cat_list'),  ## For Admin Panel Category List
     url(r'^panel/category/add/$', views.cat_add, name='cat_add'),    ## For Admin Panel Category Add
+    url(r'^export/cat/csv/$', views.export_cat_csv, name='export_cat_csv'),    ## To download/export csv file
             
 ]                                                                               
 

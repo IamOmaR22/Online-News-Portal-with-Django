@@ -11,6 +11,9 @@ from random import randint      ## Random Object (For Trending now)
 from django.contrib.auth.models import User, Group, Permission
 from manager.models import Manager
 import string
+from ipware import get_client_ip  ## Get User IP Address
+from ip2geotools.databases.noncommercial import DbIpCity  ## Get User Location
+
 
 # Create your views here.
 
@@ -68,7 +71,7 @@ def panel(request):
         return redirect('mylogin')   # when user is not logged in, it will take you the login page(mylogin)
     # Login check End
 
-    # Permission Check(logged in user can access or not) Start
+# Permission Check(logged in user can access or not) Start
     perm = 0
     perms = Permission.objects.filter(user=request.user) ## Current user, that is logged in now
     for i in perms :
@@ -93,7 +96,8 @@ def panel(request):
     # if perm == 0 :
     #     error = "Access Denied"
     #     return render(request, 'back/error.html', {'error':error})
-    # Permission Check(logged in user can access or not) End
+
+# Permission Check(logged in user can access or not) End
 
     return render(request, 'back/home.html', {'rand':rand})
 ##--#--## Panel (Admin Panel) Function For Back (Admin Panel - Backend) End ##--#--##
@@ -167,8 +171,23 @@ def myregister(request):
 
         if len(User.objects.filter(username=uname)) == 0 and len(User.objects.filter(email=email)) == 0 :
 
+            # Get User IP Start
+            ip, is_routable = get_client_ip(request)
+
+            if ip is None:
+                ip = "0.0.0.0"
+            # Get User IP End
+            # Get User Location Start
+            try:
+                response = DbIpCity.get(ip, api_key='free')
+                country = response.country + " | " + response.city
+
+            except:
+                country = "Unknown"
+            # Get User Location End
+            
             user = User.objects.create_user(username=uname, email=email, password=password1)
-            b = Manager(name=name, utxt=uname, email=email)
+            b = Manager(name=name, utxt=uname, email=email, ip=ip, country=country)
             b.save()
 
     return render(request, 'front/login.html')

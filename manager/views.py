@@ -31,7 +31,7 @@ def manager_list(request):
         return render(request, 'back/error.html', {'error':error})
     #-# Masteruser Access End #-#
 
-    manager = Manager.objects.all()
+    manager = Manager.objects.all().exclude(utxt="omar") ## utx means username.which utxt is excluded,it won't show on manager list in panel,
     
     return render(request, 'back/manager_list.html', {'manager':manager})
 ##--#--## Manager List Page(Manager) Function For Back (Admin Panel - Backend) End ##--#--##

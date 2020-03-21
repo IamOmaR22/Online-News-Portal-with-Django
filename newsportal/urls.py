@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'', include('manager.urls')),       # here manager is an app name
     url(r'', include('newsletter.urls')),       # here newsletter is an app name
     url(r'', include('comment.urls')),       # here comment is an app name
+    url(r'', include('blacklist.urls')),       # here blacklist is an app name (for IP)
 ]
 
 if settings.DEBUG:

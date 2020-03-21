@@ -8,6 +8,7 @@ from cat.models import Cat   # To count news
 from trending.models import Trending  ### Trending app's model
 import random
 from comment.models import Comment
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger # For pagination
 
 # Create your views here. 
 
@@ -107,9 +108,22 @@ def news_list(request):
     if perm == 0 :
         news = News.objects.filter(writer=request.user)
     elif perm == 1:
-        news = News.objects.all()
+        newss = News.objects.all()
     #-# Masteruser Access End #-#
-    
+    #-# Pagination Start #-#
+        paginator = Paginator(newss, 1)
+        page = request.GET.get('page')
+
+        try:
+            news = paginator.page(page)
+
+        except EmptyPage:
+            news = paginator.page(paginator.num_page)
+
+        except PageNotAnInteger:
+            news = paginator.page(1)        
+    #-# Pagination End #-#
+
     return render(request, 'back/news_list.html', {'news':news})
 ###-----#-----### News List Function For Back (Admin Panel - Backend) End ###-----#-----###
 

@@ -27,7 +27,7 @@
     </div>
     
     <div class="table-responsive">
-        <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+        <table id="" class="table table-vcenter table-condensed table-bordered"> <!-- id="example-datatable" -->
             <thead>
                 <tr>
                     <th class="text-center">ID</th>
@@ -73,6 +73,27 @@
            
             </tbody>
         </table>
+
+    <!-- Pagination Start -->
+        Page {{ news.number }} From {{ news.paginator.num_pages }}
+        <br><br>
+        {% if news.has_previous %} <!-- when i am in first page -->
+        <a href="?page={{news.previous_page_number}}" data-toggle="tooltip" title="Previous" class="btn btn-xs btn-default"> Previous</a>
+        {% endif %}
+
+        {% for i in news.paginator.page_range %}
+            {% if news.number == i %}   
+                <a href="#" onclick="return false;" data-toggle="tooltip" title="{{Disables}}" class="btn btn-xs btn-default"> {{i}}</a>  
+            {% else %}
+                <a href="?page={{i}}" data-toggle="tooltip" title="{{i}}" class="btn btn-xs btn-default"> {{i}}</a>
+            {% endif %}  
+        {% endfor %}
+            
+        {% if news.has_next %} <!-- when i am in last page -->
+        <a href="?page={{news.next_page_number}}" data-toggle="tooltip" title="Next" class="btn btn-xs btn-default"> Next</a>
+        {% endif %}
+    <!-- Pagination End -->
+
     </div>
 </div>
 <!-- END Datatables Content -->

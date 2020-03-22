@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'comment',
     'blacklist',
+    'django_crontab',  # for cron tab
+    'qr_code', # For QR Code
 ]
 
 MIDDLEWARE = [
@@ -132,6 +134,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')   # address of the folder
 
 
-
+# Media Files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+## Do it later - Not done yet
+# Cron Tab
+# CRONJOBS = [  # for 5 minutes
+#     ('*/5 * * * *' , 'main.cron.my_job') # here main is an app where i created cron.py file
+# ]

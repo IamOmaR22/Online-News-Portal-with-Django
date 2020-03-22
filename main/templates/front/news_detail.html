@@ -3,6 +3,8 @@
 
 {% load static %}
 
+{% load qr_code %}
+
 
 {% block headblock %}
 <title>{{ site.name }} | News Detail</title>
@@ -92,8 +94,8 @@
                     </div>
 
 
-                    <a href="{% url 'news_detail_short' pk=i.rand %}">/urls/{{ i.rand }}</a>
-                    <br><br><br>
+                    <a href="{% url 'news_detail_short' pk=i.rand %}">/urls/{{i.rand}}</a>
+                    <br><br><br>   
 
 
                 <!-- Comment Show Start -->
@@ -257,6 +259,26 @@
                         </div>	
                     <!-- Dynamic Tags View in News Details Page End -->
                     </div>
+
+                    <br><br>
+
+                    <!-- QR Code Template Start -->
+                    <div>
+                        <div class="how2 how2-cl4 flex-s-c m-b-30">
+                            <h3 class="f1-m-2 cl3 tab01-title">
+                                QR Code
+                            </h3>
+                        </div>
+
+                        <div class="flex-wr-s-s m-rl--5">
+                        <!-- QR Code Start -->  
+                        {% qr_from_text link size=20 border=6 %} <!-- link is a query name -->
+                        <!-- QR Code End -->                     
+                        </div>	
+
+                    </div>
+                    <!-- QR Code Template End -->
+
 
                 </div>
             </div>

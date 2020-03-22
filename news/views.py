@@ -50,8 +50,10 @@ def news_detail(request,word):
     comment = Comment.objects.filter(news_id=code, status=1).order_by('-pk')[:3]    # To show comment
 
     cmcount = len(comment)  # When there is comment, then show the comment section
+
+    link = "/urls/" + str(News.objects.get(name=word).rand)  ## For QR Code
     
-    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending, 'code':code, 'comment':comment, 'cmcount':cmcount})
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending, 'code':code, 'comment':comment, 'cmcount':cmcount, 'link':link})
 ###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 
@@ -87,8 +89,10 @@ def news_detail_short(request, pk):
 
         print("Can't Add Show")
     ### Count the total view end ###
+
+    link = "/urls/" + str(News.objects.get(name=word).rand)  ## For QR Code
     
-    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending})
+    return render(request, 'front/news_detail.html', {'site':site, 'news':news, 'cat':cat, 'subcat':subcat, 'lastnews':lastnews, 'shownews':shownews, 'popnews':popnews, 'popnews2':popnews2, 'tag':tag, 'trending':trending, 'link':link})
 ###-----#-----### News Details Function For Front (User Interface - Frontend) End ###-----#-----###
 
 

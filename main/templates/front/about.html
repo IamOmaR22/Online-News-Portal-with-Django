@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load qr_code %}
+
 
 
 {% block headblock %}
@@ -34,6 +36,7 @@
 		</div>
 	</div>
 
+
 	<!-- Page heading -->
 	<div class="container p-t-4 p-b-35">
 		<h2 class="f1-l-1 cl2">
@@ -56,6 +59,8 @@
 						
 					</div>
 				</div>
+
+				
 				
 			<!-- Sidebar for Popular news in about page Start -->
 				<div class="col-md-5 col-lg-4 p-b-30">
@@ -107,9 +112,31 @@
 					<!-- Popular Posts in about page End -->
 					</div>
 				</div>
-			<!-- Sidebar for Popular news in about page End -->	
+			<!-- Sidebar for Popular news in about page End -->		
 			</div>
+
+
+			<!-- QR Code Template Start -->
+				<div class="col-lg-7 p-b-30">
+					<div class="p-l-10 p-rl-0-sr991 p-t-4">
+						<div>
+							<div class="how2 how2-cl4 flex-s-c">
+								<h3 class="f1-m-2 cl3 tab01-title">
+									Github
+								</h3>
+							</div>
+
+						<!-- QR Code Start -->  
+						{% qr_from_text "www.github.com/IamOmaR22" size=20 border=6 %}
+						<!-- QR Code End -->                      
+						</div>	
+
+					</div>	
+				</div>
+			<!-- QR Code Template End -->
+
 		</div>
+
 	</section>
 
 {% endblock %}

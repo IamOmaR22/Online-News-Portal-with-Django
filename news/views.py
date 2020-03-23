@@ -115,7 +115,7 @@ def news_list(request):
         newss = News.objects.all()
     #-# Masteruser Access End #-#
     #-# Pagination Start #-#
-        paginator = Paginator(newss, 1)
+        paginator = Paginator(newss, 7)  ## How much news will be shown in each page
         page = request.GET.get('page')
 
         try:

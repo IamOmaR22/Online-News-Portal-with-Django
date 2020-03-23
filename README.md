@@ -7,7 +7,7 @@
 2. A Normal User Can Add News (Need Admin's Permission To Publish News).
 3. Admin Can Add Group Users.
 4. Logged In or Without Login, A User Can Comment A News.
-5. There Are Many Section Contains In This Site.
-etc...
+5. There Are Many Section Contains In This Site.</br> 
+etc...........
 
 ## Go Through This Site Then You Will Know About This Site Properly.

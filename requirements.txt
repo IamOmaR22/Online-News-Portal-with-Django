@@ -10,7 +10,7 @@ cssselect==1.1.0
 decorator==4.4.2
 dicttoxml==1.7.4
 dj-database-url==0.5.0
-Django==3.0.3
+Django==3.0.2
 django-common-helpers==0.9.2
 django-cron==0.5.1
 django-crontab==0.7.1
@@ -46,6 +46,7 @@ Pygments==2.6.1
 pylint==2.4.4
 pyparsing==2.4.6
 pyquery==1.4.1
+python-decouple==3.3
 pytz==2019.3
 pywin32-ctypes==0.2.0
 qrcode==6.1

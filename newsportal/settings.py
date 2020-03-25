@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +28,7 @@ SECRET_KEY = '08nva+ja-kswqd*i5bcx+@e&)$uo6nsxmmp04^k_ackz&0r*8('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['iamomar22.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -134,6 +137,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+STATICFILES_STORAGE =
+'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
@@ -151,3 +158,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # CRONJOBS = [  # for 5 minutes
 #     ('*/5 * * * *' , 'main.cron.my_job') # here main is an app where i created cron.py file
 # ]
+
+
+django_heroku.settings(locals())

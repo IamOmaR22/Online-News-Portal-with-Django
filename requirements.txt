@@ -14,6 +14,7 @@ Django==3.0.2
 django-common-helpers==0.9.2
 django-cron==0.5.1
 django-crontab==0.7.1
+django-heroku==0.3.1
 django-humanize==0.1.2
 django-ipware==2.1.0
 django-qr-code==1.1.0
@@ -21,6 +22,7 @@ docutils==0.16
 future==0.18.2
 geocoder==1.38.1
 geoip2==3.0.0
+get==2019.4.13
 gunicorn==20.0.4
 humanize==2.0.0
 idna==2.9
@@ -36,6 +38,9 @@ packaging==20.3
 Pillow==7.0.0
 pip-review==1.0
 pkginfo==1.5.0.1
+post==2019.4.13
+psycopg2==2.8.4
+public==2019.4.13
 pycodestyle==2.5.0
 Pygments==2.6.1
 pylint==2.4.4
@@ -44,8 +49,10 @@ pyquery==1.4.1
 pytz==2019.3
 pywin32-ctypes==0.2.0
 qrcode==6.1
+query-string==2019.4.13
 ratelim==0.1.6
 readme-renderer==25.0
+request==2019.4.13
 requests==2.23.0
 requests-toolbelt==0.9.1
 selenium==3.141.0

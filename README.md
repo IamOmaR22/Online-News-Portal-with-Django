@@ -1,4 +1,4 @@
-# Daily News For You is an online news portal developed using Django
+# Daily News For You is an online news portal developed using Django and Python
 ## Django and SQLite.
 ## I Used Here My Own Customized Admin Panel.
 

@@ -10,7 +10,7 @@ cssselect==1.1.0
 decorator==4.4.2
 dicttoxml==1.7.4
 dj-database-url==0.5.0
-Django==3.0.3
+Django==3.0.7
 django-common-helpers==0.9.2
 django-cron==0.5.1
 django-crontab==0.7.1

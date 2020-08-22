@@ -1,14 +1,25 @@
 # Daily News For You is an online news portal developed using Django and Python [![HitCount](http://hits.dwyl.com/IamOmaR22/Django-Online-News-Portal.svg)](http://hits.dwyl.com/IamOmaR22/Django-Online-News-Portal)
-## Django and SQLite.
-## I Used Here My Own Customized Admin Panel.
 
+**[Live Demo](https://iamomar22.pythonanywhere.com/)**
+
+# Tools
+## Front end part
+* HTML
+* CSS
+* BOOTSTARP
+* JavaScript
+## Backend
+* Django
+* SQLite 3
+
+## I Used Here My Own Customized Admin Panel.
 ```
 This Website is fully Dynamic.
 You can change every part through Admin Panel,
 Masteruser can controle everything.
 ```
 
-## Features:
+# Features:
 ```
 1. An Admin Can Get All The Access Of This News Site.
 2. A Normal User Can Add News (Need Admin's Permission To Publish News).
@@ -25,5 +36,13 @@ Masteruser can controle everything.
 13. Therer is a trending section. You can see the breaking newses here.
 etc...........
 ```
+
+# Screenshots of the Project:
+<p align="center">
+  <img width="660" height="300" src="main/static/front/images/screenshots/a.png">
+  <img width="660" height="300" src="main/static/front/images/screenshots/b.png">
+</p>
+
+**Copyright (c)** 2020-3020 Md. Omar Faruk
 
 ## Go Through This Site Then You Will Know About This Site Properly.

@@ -1,14 +1,15 @@
-# Daily News For You is an online news portal developed using Django
+# Daily News For You is an online news portal developed using Django and Python [![HitCount](http://hits.dwyl.com/IamOmaR22/Django-Online-News-Portal.svg)](http://hits.dwyl.com/IamOmaR22/Django-Online-News-Portal)
 ## Django and SQLite.
 ## I Used Here My Own Customized Admin Panel.
 
 ```
-This Website is fully Dynamic.</br>
-You can change every part through Admin Panel,</br>
+This Website is fully Dynamic.
+You can change every part through Admin Panel,
 Masteruser can controle everything.
 ```
 
 ## Features:
+```
 1. An Admin Can Get All The Access Of This News Site.
 2. A Normal User Can Add News (Need Admin's Permission To Publish News).
 3. Admin Can Add Group Users.
@@ -21,7 +22,8 @@ Masteruser can controle everything.
 10. If there is a news for particular cat or subcat then the cat will be shown.
 11. In contact section i gave a QR Code. By scanning QR Code you can redirected into My github account.
 12. I used forloop to view news in different section.
-13. Therer is a trending section. You can see the breaking newses here.</br> 
+13. Therer is a trending section. You can see the breaking newses here.
 etc...........
+```
 
 ## Go Through This Site Then You Will Know About This Site Properly.

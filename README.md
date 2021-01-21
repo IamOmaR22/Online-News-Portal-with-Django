@@ -43,6 +43,8 @@ Masteruser can controle everything.
   <img width="660" height="300" src="main/static/front/images/screenshots/b.png">
 </p>
 
+### Let's celebrate 🍕🍰🍕 If you like my project, then simply give a star 🌟✰⭐✪🔯✨
+
 **Copyright (c)** 2020-3020 Md. Omar Faruk
 
 ## Go Through This Site Then You Will Know About This Site Properly. I made this project for my Web Engineering Course.

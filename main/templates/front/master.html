@@ -29,6 +29,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'front/css/main.css' %}">
 <!--===============================================================================================-->
 </head>
+
 <body class="animsition">
 	
 <!-- Header Section Start -->
@@ -36,10 +37,188 @@
 	<!-- Header desktop -->
 		<div class="container-menu-desktop">
 
+
+
+			<!-- Bootstrap Navbar Start -->
+			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #111111;">
+				<span class="navbar-brand" href="#" style="font-size: 15px;">Trending Now: 
+					<span class="dis-inline-block cl16 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
+								
+						{% for trend in trending %}
+						<span class="dis-inline-block slide100-txt-item animated visible-false" style="font-size: 13px;">
+							{{ trend.txt|slice:80 }}
+						</span>
+						{% endfor %}
+
+					</span>
+				</span>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+			  
+				<div class="collapse navbar-collapse" id="navbarColor02">
+				  <ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+					  <a class="nav-link" href="/">Home
+						<span class="sr-only">(current)</span>
+					  </a>
+					</li>
+					<li class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{request.user}}</a>
+					  <div class="dropdown-menu">
+						<a class="dropdown-item" href="/about">About</a>
+						<a class="dropdown-item" href="/contact">Contact</a>
+					  </div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/login">Log in / Sing up</a>
+					  </li>
+				  </ul>
+				</div>
+			  </nav>
+
+
+			  <!-- Start -->
+		
+				<!-- Menu desktop (Menu nav bar) Start -->
+					<nav class="menu-desktop">
+						<a class="logo-stick" href="/">
+							<img src="{{ site.picurl }}" alt="LOGO">
+						</a>
+
+						<ul class="main-menu justify-content-center">
+							<li class="main-menu-active">
+								<a href="/">Home</a>
+							</li>
+
+							<!-- cat from views.py(main app) -->
+							{% for gg in cat %}
+							{% if gg.count != 0 %} <!--if the category has no news then the category will not be shown-->
+							<li class="mega-menu-item">
+								<a href="category-01.html">{{ gg.name }}</a>
+								
+								<div class="sub-mega-menu">
+								<!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) Start -->
+									<div class="nav flex-column nav-pills" role="tablist">
+										<a class="nav-link active" data-toggle="pill" href="#news-0" role="tab">All</a>
+
+										{% for subcat in subcat %}
+										{% if subcat.catid == gg.pk %}
+										<a class="nav-link" data-toggle="pill" href="#{{ subcat.pk }}" role="tab">{{ subcat.name }}</a>
+										{% endif %}
+										{% endfor %}
+										
+									</div>
+								<!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) End -->
+
+							<!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) Start -->
+									<div class="tab-content">
+										<div class="tab-pane show active" id="news-0" role="tabpanel">
+											<div class="row">
+
+												<!-- here news is a query name from main app's views -->
+												{% for hh in news %}
+												{% if hh.ocatid == gg.pk %}  <!-- pk means id of the category -->
+												<div class="col-3">
+													<!-- Item post -->	
+													<div>
+														<a href="{% url 'news_detail' word=hh.name %}" class="wrap-pic-w hov1 trans-03">
+															<img style="display: inline-block; width: 220x; height: 110px;" src="{{ hh.picurl }}" alt="IMG">
+														</a>
+
+														<div class="p-t-10">
+															<h5 class="p-b-5">
+																<a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
+																	{{ hh.name }}
+																</a>
+															</h5>
+
+															<span class="cl8">
+																<a href="{% url 'news_detail' word=hh.name %}" class="f1-s-6 cl8 hov-cl10 trans-03">
+																	{{ hh.catname }}
+																</a>
+
+																<span class="f1-s-3 m-rl-3">
+																	-
+																</span>
+
+																<span class="f1-s-3">
+																	{{ hh.date }}
+																</span>
+															</span>
+														</div>
+													</div>
+												</div>
+												{% endif%}
+												{% endfor %}
+
+											</div>
+										</div>
+
+										{% for subcat2 in subcat %}
+										<div class="tab-pane" id="{{ subcat2.pk }}" role="tabpanel">
+											<div class="row">
+
+
+										<!-- here news is a query name from main app's views -->
+										{% for hh in news %}
+										{% if hh.catid == subcat2.pk %}  <!-- pk means id of the category -->
+										<div class="col-3">
+											<!-- Item post -->	
+											<div>
+												<a href="{% url 'news_detail' word=hh.name %}" class="wrap-pic-w hov1 trans-03">
+													<img style="display: inline-block; width: 220x; height: 110px;" src="{{ hh.picurl }}" alt="IMG">
+												</a>
+
+												<div class="p-t-10">
+													<h5 class="p-b-5">
+														<a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
+															{{ hh.name }}
+														</a>
+													</h5>
+
+													<span class="cl8">
+														<a href="{% url 'news_detail' word=hh.name %}" class="f1-s-6 cl8 hov-cl10 trans-03">
+															{{ hh.catname }}
+														</a>
+
+														<span class="f1-s-3 m-rl-3">
+															-
+														</span>
+
+														<span class="f1-s-3">
+															{{ hh.date }}
+														</span>
+													</span>
+												</div>
+											</div>
+										</div>
+										{% endif%}
+										{% endfor %}
+												
+
+											</div>
+										</div>
+										{% endfor %}
+
+									</div>
+							<!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) End -->
+								</div>
+							</li>
+							{% endif %}
+							{% endfor %}
+
+						</ul>
+					</nav>
+				<!-- Menu desktop (Menu nav bar) End -->	
+	
+		<!-- End -->
+			<!-- Bootstrap Navbar End -->
+<br><br><br>
 		<!-- Top Bar Start -->
-			<div class="topbar">
+			<!-- <div class="topbar">
 				<div class="content-topbar h-100 p-rl-30">
-				<!-- Trending Now (on top bar) Start -->	
+					
 					<div class="align-self-stretch size-w-0 pos-relative m-r-30">
 						<div class="f2-s-1 flex-wr-s-c s-full ab-t-l p-b-2">
 							<span class="text-uppercase cl0 p-r-8">
@@ -93,7 +272,7 @@
 						</div>
 					</div>	
 				</div>
-			</div>
+			</div> -->
 		<!-- Top Bar End -->
 		
 			

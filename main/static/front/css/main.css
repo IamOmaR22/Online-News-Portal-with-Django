@@ -786,6 +786,7 @@ li.respon-sub-menu > .sub-menu .sub-menu {
   .topbar,
   .logo,
   .no-banner,
+  /* .wrap-main-nav {display: block;} */
   .wrap-main-nav {display: none;}
 
   .wrap-logo {

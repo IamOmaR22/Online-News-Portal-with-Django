@@ -2,7 +2,9 @@
 
 *Daily News For You is an online news portal. This is the online version of a newspaper, as a stand-alone publication.*
 
-**[Live Demo](https://iamomar22.pythonanywhere.com/)**
+**[Live Demo - 1](https://iamomar22.pythonanywhere.com/)**
+
+**[Live Demo - 2](http://tnbjpnews.com/)**
 
 # Features:
 - An Admin Can Get All The Access Of This News Site.

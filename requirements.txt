@@ -42,7 +42,7 @@ post==2019.4.13
 psycopg2==2.8.4
 public==2019.4.13
 pycodestyle==2.5.0
-Pygments==2.6.1
+Pygments==2.7.4
 pylint==2.4.4
 pyparsing==2.4.6
 pyquery==1.4.1

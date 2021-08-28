@@ -25,7 +25,9 @@ SECRET_KEY = '08nva+ja-kswomarqd*i5bcx+@e&)$uo6nsxmmfarukp04^k_ackz&0r*8('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "glacial-woodland-71457.herokuapp.com",
+]
 
 
 # Application definition

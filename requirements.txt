@@ -22,7 +22,6 @@ docutils==0.16
 future==0.18.2
 geocoder==1.38.1
 geoip2==3.0.0
-get==2019.4.13
 gunicorn==20.0.4
 humanize==2.0.0
 idna==2.9
@@ -38,7 +37,6 @@ packaging==20.3
 Pillow==8.2.0
 pip-review==1.0
 pkginfo==1.5.0.1
-post==2019.4.13
 psycopg2==2.8.4
 public==2019.4.13
 pycodestyle==2.5.0
@@ -53,7 +51,6 @@ qrcode==6.1
 query-string==2019.4.13
 ratelim==0.1.6
 readme-renderer==25.0
-request==2019.4.13
 requests==2.23.0
 requests-toolbelt==0.9.1
 selenium==3.141.0

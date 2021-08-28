@@ -26,7 +26,7 @@ SECRET_KEY = '08nva+ja-kswomarqd*i5bcx+@e&)$uo6nsxmmfarukp04^k_ackz&0r*8('
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "glacial-woodland-71457.herokuapp.com",
+    'glacial-woodland-71457.herokuapp.com',
 ]
 
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

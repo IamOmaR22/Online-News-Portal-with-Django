@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '08nva+ja-kswomarqd*i5bcx+@e&)$uo6nsxmmfarukp04^k_ackz&0r*8('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'glacial-woodland-71457.herokuapp.com',
